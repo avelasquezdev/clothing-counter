@@ -8,3 +8,13 @@ img {
 .progress {
     border: 2px dashed rgba(0, 0, 0, 0.125);
 }
+
+.buttonFilter {
+    border-color: #343a40;
+    border-style: solid;
+    border-width: 3px;
+}
+
+.btn-outline-dark {
+    border-color: #343a40 !important;
+}

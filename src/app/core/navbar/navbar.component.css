@@ -5,3 +5,16 @@
 .nav-item :hover {
     border-bottom: 2px solid #343a40;
 }
+
+@media (max-width: 500px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+    .imgMovile {
+        height: 80px;
+    }
+    .nav-link {
+        font-size: 0.80rem;
+        padding: 0.5rem 0.5rem;
+    }
+}
