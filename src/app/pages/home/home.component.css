@@ -1,0 +1,10 @@
+img {
+    height: 100px;
+    width: 100px;
+}
+.card-footer {
+    width: 100%;
+}
+.progress {
+    border: 2px dashed rgba(0, 0, 0, 0.125);
+}

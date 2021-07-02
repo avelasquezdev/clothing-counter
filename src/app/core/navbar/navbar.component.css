@@ -1,0 +1,7 @@
+.nav-link {
+    color: black;
+}
+
+.nav-item :hover {
+    border-bottom: 2px solid #343a40;
+}
