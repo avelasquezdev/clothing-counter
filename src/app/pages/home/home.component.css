@@ -1,12 +1,22 @@
 img {
-    height: 100px;
-    width: 100px;
+    height: 200px;
+    width: 200px;
 }
 .card-footer {
     width: 100%;
 }
 .progress {
     border: 2px dashed rgba(0, 0, 0, 0.125);
+}
+
+.form-check {
+    border-bottom: 1px solid #343a40c0;
+    width: fit-content;
+}
+
+.form-check :hover {
+    border: 2px outset #343a40c0;
+    padding: 2px;
 }
 
 .buttonFilter {
@@ -17,4 +27,18 @@ img {
 
 .btn-outline-dark {
     border-color: #343a40 !important;
+}
+
+a {
+    color: black;
+}
+
+@media (max-width: 1000px) {
+    img {
+        height: 50%;
+        width: 50%;
+    }
+    .form-check {
+        font-size: 0.80rem;
+    }
 }
