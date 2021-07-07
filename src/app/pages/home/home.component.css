@@ -60,4 +60,7 @@ a {
     .filtersPc {
         display: none;
     }
+    .col-4 {
+        width: 100% !important;
+    }
 }

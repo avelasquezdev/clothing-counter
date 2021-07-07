@@ -10,6 +10,7 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { BusinessComponent } from './pages/business/business.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CheckInComponent } from './pages/check-in/check-in.component';
+import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -24,9 +25,10 @@ import { CheckInComponent } from './pages/check-in/check-in.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ModalModule.forRoot(),
   ],
-  providers: [],
+  providers: [BsModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
