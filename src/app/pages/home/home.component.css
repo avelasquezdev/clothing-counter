@@ -15,8 +15,9 @@ img {
 }
 
 .form-check :hover {
-    border: 2px outset #343a40c0;
-    padding: 2px;
+    /* border: 2px outset #343a40c0;
+    padding: 2px; */
+    color: red;
 }
 
 .buttonFilter {
@@ -33,6 +34,14 @@ a {
     color: black;
 }
 
+.filtersPc {
+    display: block;
+}
+
+.filtersmovile {
+    display: none;
+}
+
 @media (max-width: 1000px) {
     img {
         height: 50%;
@@ -40,5 +49,15 @@ a {
     }
     .form-check {
         font-size: 0.80rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .filtersmovile {
+        display: block;
+    }
+
+    .filtersPc {
+        display: none;
     }
 }
