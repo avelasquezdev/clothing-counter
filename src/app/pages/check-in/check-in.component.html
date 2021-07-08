@@ -2,20 +2,20 @@
     <div class="container">
         <div class="border border-dark rounded m-5 mobileOptions">
             <h1 class="p-4 mobileTitle">Registro</h1>
-            <form action="post" class="p-4">
+            <form [formGroup]="checkInForm" class="p-4">
                 <div class="form-group">
                     <label for="InputUserName">Nombre de Usuario</label>
-                    <input type="text" class="form-control" id="InputUserName" aria-describedby="user name" required>
+                    <input type="text" class="form-control" id="InputUserName" aria-describedby="username" formControlName="username" required>
                 </div>
                 <div class="form-group">
                     <label for="InputEmail1">Correo Electronico</label>
-                    <input type="email" class="form-control" id="InputEmail1" aria-describedby="email" required>
+                    <input type="email" class="form-control" id="InputEmail1" aria-describedby="email" formControlName="email" required>
                 </div>
                 <div class="form-group">
                     <label for="InputPassword">Contraseña</label>
-                    <input type="password" class="form-control" id="InputPassword" aria-describedby="password" required>
+                    <input type="password" class="form-control" id="InputPassword" aria-describedby="password" formControlName="password" required>
                 </div>
-                <button type="submit" class="btn  btn-outline-dark btn-lg btn-block">Crear Cuenta</button>
+                <button type="submit" class="btn  btn-outline-dark btn-lg btn-block" (click)="checkIn()">Crear Cuenta</button>
             </form>
             <hr>
             <div class="p-4">

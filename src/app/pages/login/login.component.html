@@ -2,16 +2,16 @@
     <div class="container">
         <div class="border border-dark rounded m-5 mobileOptions">
             <h1 class="p-4 mobileTitle">Inicio Sesion</h1>
-            <form action="post" class="p-4">
+            <form [formGroup]="loginForm" class="p-4">
                 <div class="form-group">
                     <label for="InputEmail">Correo Electronico</label>
-                    <input type="email" class="form-control" id="InputEmail" aria-describedby="email" required>
+                    <input type="email" class="form-control" id="InputEmail" aria-describedby="email" formControlName="email" required>
                 </div>
                 <div class="form-group">
                     <label for="InputPassword">Contraseña</label>
-                    <input type="password" class="form-control" id="InputPassword" aria-describedby="password" required>
+                    <input type="password" class="form-control" id="InputPassword" aria-describedby="password" formControlName="password" required>
                 </div>
-                <button type="submit" class="btn  btn-outline-dark btn-lg btn-block">Iniciar Sesion</button>
+                <button type="submit" class="btn  btn-outline-dark btn-lg btn-block" (click)="login()">Iniciar Sesion</button>
             </form>
             <div class="pl-4 pb-3">
                 <h5>Conexion con: <a href="#" role="button"><i class="fa fa-google border border-dark rounded-circle p-2 logoGoogle"></i></a></h5>
@@ -20,7 +20,7 @@
             <div class="p-4">
                 <h3 class="mobileTitle2">¿No tienes cuenta?</h3>
                 <p>Registrate en unos clics</p>
-                <a role="button" href="check-in" class="btn btn-outline-dark btn-lg btn-block">Registrarse</a>
+                <a role="button" routerLink="/check-in" class="btn btn-outline-dark btn-lg btn-block">Registrarse</a>
             </div>
         </div>
     </div>

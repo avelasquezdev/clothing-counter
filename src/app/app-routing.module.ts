@@ -8,8 +8,11 @@ import { CheckInComponent } from './pages/check-in/check-in.component';
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent }, { path: 'about-us', component: AboutUsComponent }, { path: 'business', component: BusinessComponent },
-  { path: 'login', component: LoginComponent }, { path: 'check-in', component: CheckInComponent }
+  { path: '', component: HomeComponent }, 
+  { path: 'about-us', component: AboutUsComponent }, 
+  { path: 'business', component: BusinessComponent },
+  { path: 'login', component: LoginComponent }, 
+  { path: 'check-in', component: CheckInComponent }
 ];
 
 @NgModule({

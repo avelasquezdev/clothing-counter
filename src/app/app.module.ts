@@ -11,6 +11,15 @@ import { BusinessComponent } from './pages/business/business.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CheckInComponent } from './pages/check-in/check-in.component';
 import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
+import { PasswordRecoverComponent } from './shared/users/password-recover/password-recover.component';
+import { ResetPasswordComponent } from './shared/users/reset-password/reset-password.component';
+import { LoggedInGuard } from './shared/auth/logged-in-guard.service';
+import { AuthGuard } from './shared/auth/auth-guard.service';
+import { AuthService } from './shared/auth/auth.service';
+import { UsersService } from './shared/users/users.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ApiAuthInterceptor } from './app.api-auth-interceptor';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,14 +30,29 @@ import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
     AboutUsComponent,
     BusinessComponent,
     LoginComponent,
-    CheckInComponent
+    CheckInComponent,
+    PasswordRecoverComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ModalModule.forRoot(),
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [BsModalService],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiAuthInterceptor,
+      multi: true,
+    },
+    BsModalService,
+    UsersService,
+    AuthService,
+    AuthGuard,
+    LoggedInGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
