@@ -1,3 +1,18 @@
 .logoGoogle {
     color: #e61515;
 }
+
+@media (max-width: 500px) {
+    .mobileOptions {
+        margin: 2rem !important;
+        margin-left: 1.5rem !important;
+        margin-right: 1.5rem !important;
+    }
+    .mobileTitle {
+        font-size: 1.5rem !important;
+        padding-bottom: 0.0rem !important;
+    }
+    .mobileTitle2 {
+        font-size: 1.0rem !important;
+    }
+}
