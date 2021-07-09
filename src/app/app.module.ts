@@ -20,6 +20,7 @@ import { UsersService } from './shared/users/users.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiAuthInterceptor } from './app.api-auth-interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CategoryComponent } from './back/categories/category/category.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     CheckInComponent,
     PasswordRecoverComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,

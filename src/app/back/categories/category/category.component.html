@@ -1,0 +1,7 @@
+<form [formGroup]="categoryForm" class="p-4">
+    <div class="form-group">
+        <label for="InputUserName">Nombre de Categoria</label>
+        <input type="text" class="form-control" id="InputCategoryName" aria-describedby="categoryname" formControlName="categoryname" required>
+    </div>
+    <button type="submit" class="btn  btn-outline-dark btn-lg btn-block" (click)="category()">Enviar</button>
+</form>
