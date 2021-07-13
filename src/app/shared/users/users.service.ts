@@ -14,9 +14,9 @@ export class UsersService {
     private http: HttpClient
   ) { }
 
-  public postUser(user): Observable<any> {
+  public postUser(user): Observable<User> {
     return this.http
-      .post<any>(API_URL + '/register', user);
+      .post<User>(API_URL + '/register', user);
   }
 
   public getUser(id: string): Observable<User> {

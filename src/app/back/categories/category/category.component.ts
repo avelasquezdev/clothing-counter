@@ -23,7 +23,7 @@ export class CategoryComponent implements OnInit {
 
   createForm() {
     this.categoryForm = this.fb.group({
-      categoryname: ['', Validators.required]
+      name: ['', Validators.required]
     })
   }
 
@@ -33,11 +33,11 @@ export class CategoryComponent implements OnInit {
     }
 
     const category = {
-      categoryname: this.categoryForm.get('categoryname').value,
+      name: this.categoryForm.get('name').value,
     }
 
     // No se que tendria que poner en vez de category
-    this.authService.category(category.categoryname)
+    this.authService.category(category.name)
     .then(() => {
       location.replace('');
     }).catch(error => {
