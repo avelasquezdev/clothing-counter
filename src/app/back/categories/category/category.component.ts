@@ -1,7 +1,6 @@
 import { Component, ElementRef ,OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/shared/auth/auth.service';
-import { UsersService } from 'src/app/shared/users/users.service';
+import { CategoryService } from '../category.service';
 
 @Component({
   selector: 'app-category',
@@ -13,7 +12,7 @@ export class CategoryComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private el: ElementRef,
-    private authService: AuthService
+    private categoryService: CategoryService
   ) { 
     this.createForm();
   }
@@ -37,11 +36,9 @@ export class CategoryComponent implements OnInit {
     }
 
     // No se que tendria que poner en vez de category
-    this.authService.category(category.name)
-    .then(() => {
+    this.categoryService.postCategory(category)
+    .subscribe(() => {
       location.replace('');
-    }).catch(error => {
-      console.log(error.error.code + '- ' + error.error.message)
     });
   }
 

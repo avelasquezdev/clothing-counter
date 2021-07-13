@@ -21,6 +21,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiAuthInterceptor } from './app.api-auth-interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CategoryComponent } from './back/categories/category/category.component';
+import { CategoryService } from './back/categories/category.service';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { CategoryComponent } from './back/categories/category/category.component
     UsersService,
     AuthService,
     AuthGuard,
-    LoggedInGuard],
+    LoggedInGuard,
+    CategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
