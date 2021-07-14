@@ -34,12 +34,12 @@ export class CategoryService {
   }
 
   public deleteCategory(id: string): any {
-    return this.http.delete<Category>(API_URL + '/categories/' + id);
+    return this.http.delete<Category>(API_URL + id);
   }
 
   public putCategory(id: string, category: Category): Observable<Category> {
     return this.http
-      .put<Category>(API_URL + '/categories/' + id, category);
+      .put<Category>(API_URL + id, category);
   }
 
 }

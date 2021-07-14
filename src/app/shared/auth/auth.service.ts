@@ -140,6 +140,10 @@ export class AuthService {
     return this.user['email'];
   }
 
+  getIsAdmin() {
+    return this.isAdmin;
+  }
+
   roles() {
     return JSON.parse(localStorage.getItem('user')).roles;
   }

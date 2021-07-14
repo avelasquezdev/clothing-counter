@@ -24,6 +24,8 @@ import { CategoryComponent } from './back/categories/category/category.component
 import { CategoryService } from './back/categories/category.service';
 import { ClothingComponent } from './back/clothes/clothing/clothing.component';
 import { ClothingService } from './back/clothes/clothing.service';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { CategoriesListComponent } from './back/categories/categories-list/categories-list.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { ClothingService } from './back/clothes/clothing.service';
     PasswordRecoverComponent,
     ResetPasswordComponent,
     CategoryComponent,
+    CategoriesListComponent,
     ClothingComponent
   ],
   imports: [
@@ -46,7 +49,8 @@ import { ClothingService } from './back/clothes/clothing.service';
     FormsModule,
     ModalModule.forRoot(),
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxDatatableModule
   ],
   providers: [
     {

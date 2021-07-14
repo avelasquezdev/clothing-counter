@@ -1,2 +1,33 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap');
+@import '~@swimlane/ngx-datatable/index.css';
+@import '~@swimlane/ngx-datatable/themes/bootstrap.scss';
+@import '~@swimlane/ngx-datatable/assets/icons.css';
+
+// ngx-datatable styles
+body  .ngx-datatable.bootstrap .datatable-body .datatable-body-row.datatable-row-even {
+    background-color: #fff;
+  }
+  .ngx-datatable.bootstrap .datatable-header .datatable-header-cell .datatable-header-cell-label {
+    font-weight: 600;
+  }
+  .ngx-datatable.bootstrap .datatable-footer {
+    border-top: 2px solid #d1d4d7;
+    font-weight: 600;
+    color: $dark !important;
+    background-color: #fff !important;
+  }
+  body .ngx-datatable.bootstrap .datatable-footer .datatable-pager a {
+    color: #212529;
+  }
+  body .ngx-datatable.bootstrap .datatable-footer .datatable-pager ul li:not(.disabled).active a,
+  body .ngx-datatable.bootstrap .datatable-footer .datatable-pager ul li:not(.disabled):hover a {
+    background-color: $light;
+  }
+  .ngx-datatable .btn-sm .fa {
+    width: 13px;
+  }
+  // TEMPORAL
+  .ngx-datatable.bootstrap .btn {
+    margin-bottom: 30px;
+  }
