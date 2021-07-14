@@ -22,6 +22,8 @@ import { ApiAuthInterceptor } from './app.api-auth-interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CategoryComponent } from './back/categories/category/category.component';
 import { CategoryService } from './back/categories/category.service';
+import { ClothingComponent } from './back/clothes/clothing/clothing.component';
+import { ClothingService } from './back/clothes/clothing.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { CategoryService } from './back/categories/category.service';
     CheckInComponent,
     PasswordRecoverComponent,
     ResetPasswordComponent,
-    CategoryComponent
+    CategoryComponent,
+    ClothingComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,8 @@ import { CategoryService } from './back/categories/category.service';
     AuthService,
     AuthGuard,
     LoggedInGuard,
-    CategoryService],
+    CategoryService,
+    ClothingService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
