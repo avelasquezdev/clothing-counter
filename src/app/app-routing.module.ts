@@ -6,6 +6,7 @@ import { BusinessComponent } from './pages/business/business.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CheckInComponent } from './pages/check-in/check-in.component';
 import { CategoryComponent } from './back/categories/category/category.component';
+import { ClothingComponent } from './back/clothes/clothing/clothing.component';
 
 
 const routes: Routes = [
@@ -16,7 +17,10 @@ const routes: Routes = [
   { path: 'check-in', component: CheckInComponent },
   { path: 'new-category', component: CategoryComponent },
   { path: 'edit-category/:id', component: CategoryComponent },
-  //{ path: 'categories', component:  }
+  //{ path: 'categories', component:  },
+  { path: 'new-clothing', component: ClothingComponent },
+  { path: 'edit-clothing/:id', component: ClothingComponent },
+  //{ path: 'clothes', component:  }
 ];
 
 @NgModule({
