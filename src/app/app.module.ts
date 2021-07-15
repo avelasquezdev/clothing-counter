@@ -26,6 +26,7 @@ import { ClotheComponent } from './back/clothes/clothe/clothe.component';
 import { ClotheService } from './back/clothes/clothe.service';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CategoriesListComponent } from './back/categories/categories-list/categories-list.component';
+import { ClothesListComponent } from './back/clothes/clothes-list/clothes-list.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { CategoriesListComponent } from './back/categories/categories-list/categ
     ResetPasswordComponent,
     CategoryComponent,
     CategoriesListComponent,
-    ClotheComponent
+    ClotheComponent,
+    ClothesListComponent
   ],
   imports: [
     BrowserModule,

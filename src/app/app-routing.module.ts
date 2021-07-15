@@ -8,6 +8,7 @@ import { CheckInComponent } from './pages/check-in/check-in.component';
 import { CategoryComponent } from './back/categories/category/category.component';
 import { ClotheComponent } from './back/clothes/clothe/clothe.component';
 import { CategoriesListComponent } from './back/categories/categories-list/categories-list.component';
+import { ClothesListComponent } from './back/clothes/clothes-list/clothes-list.component';
 
 
 const routes: Routes = [
@@ -21,7 +22,7 @@ const routes: Routes = [
   { path: 'categories-list', component:  CategoriesListComponent },
   { path: 'new-clothe', component: ClotheComponent },
   { path: 'edit-clothe/:id', component: ClotheComponent },
-  //{ path: 'clothes-list', component: ClothesListComponent }
+  { path: 'clothes-list', component: ClothesListComponent }
 ];
 
 @NgModule({
