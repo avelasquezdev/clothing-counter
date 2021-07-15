@@ -69,7 +69,6 @@ export class ClotheComponent implements OnInit {
       createdBy: this.clotheForm.get('createdBy').value
     }
 
-    // No se que tendria que poner en vez de category
     this.clotheService.postClothe(clothe)
       .subscribe(() => {
         location.replace('');
