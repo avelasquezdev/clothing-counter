@@ -6,7 +6,7 @@ import { BusinessComponent } from './pages/business/business.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CheckInComponent } from './pages/check-in/check-in.component';
 import { CategoryComponent } from './back/categories/category/category.component';
-import { ClothingComponent } from './back/clothes/clothing/clothing.component';
+import { ClotheComponent } from './back/clothes/clothe/clothe.component';
 import { CategoriesListComponent } from './back/categories/categories-list/categories-list.component';
 
 
@@ -18,10 +18,10 @@ const routes: Routes = [
   { path: 'check-in', component: CheckInComponent },
   { path: 'new-category', component: CategoryComponent },
   { path: 'edit-category/:id', component: CategoryComponent },
-  { path: 'categories-list', component:  CategoriesListComponent},
-  { path: 'new-clothe', component: ClothingComponent },
-  { path: 'edit-clothe/:id', component: ClothingComponent },
-  //{ path: 'clothes', component:  }
+  { path: 'categories-list', component:  CategoriesListComponent },
+  { path: 'new-clothe', component: ClotheComponent },
+  { path: 'edit-clothe/:id', component: ClotheComponent },
+  //{ path: 'clothes-list', component: ClothesListComponent }
 ];
 
 @NgModule({

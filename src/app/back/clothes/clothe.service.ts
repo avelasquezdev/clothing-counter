@@ -2,44 +2,44 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { Clothing, ClothingCollection } from './clothing.model';
+import { Clothe, ClotheCollection } from './clothe.model';
 //import { map } from 'rxjs/operators';
 
 
 const API_URL = environment.apiUrl;
 
 @Injectable()
-export class ClothingService {
+export class ClotheService {
   constructor(
     private http: HttpClient
   ) { }
 
-  public postClothing(clothing): Observable<Clothing> {
+  public postClothe(clothe): Observable<Clothe> {
     return this.http
-      .post<Clothing>(API_URL + '/clothes', clothing);
+      .post<Clothe>(API_URL + '/clothes', clothe);
   }
 
-  public getClothing(id: string): Observable<Clothing> {
+  public getClothe(id: string): Observable<Clothe> {
     return this.http
-      .get<Clothing>(API_URL + '/clothes/' + id);
+      .get<Clothe>(API_URL + '/clothes/' + id);
   }
 
-  public getClothes(filters?: any): Observable<ClothingCollection> {
+  public getClothes(filters?: any): Observable<ClotheCollection> {
     if (filters === undefined) { filters = {}; }
 
     let httpParams = new HttpParams();
 
     return this.http
-      .get<ClothingCollection>(API_URL + '/clothes', { params: httpParams });
+      .get<ClotheCollection>(API_URL + '/clothes', { params: httpParams });
   }
 
-  public deleteClothing(id: string): any {
-    return this.http.delete<Clothing>(API_URL + '/clothes/' + id);
+  public deleteClothe(id: string): any {
+    return this.http.delete<Clothe>(API_URL + '/clothes/' + id);
   }
 
-  public putClothing(id: string, clothing: Clothing): Observable<Clothing> {
+  public putClothe(id: string, clothe: Clothe): Observable<Clothe> {
     return this.http
-      .put<Clothing>(API_URL + '/clothes/' + id, clothing);
+      .put<Clothe>(API_URL + '/clothes/' + id, clothe);
   }
 
   postMediaClothe(fileItem: File, extraData?: object): Observable<any> {

@@ -22,8 +22,8 @@ import { ApiAuthInterceptor } from './app.api-auth-interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CategoryComponent } from './back/categories/category/category.component';
 import { CategoryService } from './back/categories/category.service';
-import { ClothingComponent } from './back/clothes/clothing/clothing.component';
-import { ClothingService } from './back/clothes/clothing.service';
+import { ClotheComponent } from './back/clothes/clothe/clothe.component';
+import { ClotheService } from './back/clothes/clothe.service';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CategoriesListComponent } from './back/categories/categories-list/categories-list.component';
 
@@ -41,7 +41,7 @@ import { CategoriesListComponent } from './back/categories/categories-list/categ
     ResetPasswordComponent,
     CategoryComponent,
     CategoriesListComponent,
-    ClothingComponent
+    ClotheComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +64,7 @@ import { CategoriesListComponent } from './back/categories/categories-list/categ
     AuthGuard,
     LoggedInGuard,
     CategoryService,
-    ClothingService,],
+    ClotheService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

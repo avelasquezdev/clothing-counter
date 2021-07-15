@@ -1,8 +1,8 @@
-export class ClothingCollection {
+export class ClotheCollection {
     total: number;
 }
 
-export class Clothing {
+export class Clothe {
     // Faltan campos
     title: string
     description: string

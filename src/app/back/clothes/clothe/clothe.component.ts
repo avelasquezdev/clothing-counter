@@ -3,15 +3,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpEventType } from '@angular/common/http';
 import { AuthService } from 'src/app/shared/auth/auth.service';
 import { CategoryService } from '../../categories/category.service';
-import { ClothingService } from '../clothing.service';
+import { ClotheService } from '../clothe.service';
 
 @Component({
   selector: 'app-clothe',
-  templateUrl: './clothing.component.html',
-  styleUrls: ['./clothing.component.css']
+  templateUrl: './clothe.component.html',
+  styleUrls: ['./clothe.component.css']
 })
-export class ClothingComponent implements OnInit {
-  clothingForm: FormGroup;
+export class ClotheComponent implements OnInit {
+  clotheForm: FormGroup;
   categories;
   fileName = '';
   selectedFile: File;
@@ -29,7 +29,7 @@ export class ClothingComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private el: ElementRef,
-    private clothingService: ClothingService,
+    private clotheService: ClotheService,
     private categoryService: CategoryService,
     private authService: AuthService
   ) {
@@ -43,7 +43,7 @@ export class ClothingComponent implements OnInit {
   }
 
   createForm() {
-    this.clothingForm = this.fb.group({
+    this.clotheForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
       price: ['0', Validators.required],
@@ -55,22 +55,22 @@ export class ClothingComponent implements OnInit {
   }
 
   CreateClothe() {
-    if (this.clothingForm.invalid) {
-      this.showErrors(this.clothingForm)
+    if (this.clotheForm.invalid) {
+      this.showErrors(this.clotheForm)
     }
 
-    const clothing = {
-      title: this.clothingForm.get('title').value,
-      description: this.clothingForm.get('description').value,
-      price: this.clothingForm.get('price').value,
-      isRecommended: this.clothingForm.get('isRecommended').value,
-      categories: [this.clothingForm.get('categories').value],
-      image: this.clothingForm.get('image').value,
-      createdBy: this.clothingForm.get('createdBy').value
+    const clothe = {
+      title: this.clotheForm.get('title').value,
+      description: this.clotheForm.get('description').value,
+      price: this.clotheForm.get('price').value,
+      isRecommended: this.clotheForm.get('isRecommended').value,
+      categories: [this.clotheForm.get('categories').value],
+      image: this.clotheForm.get('image').value,
+      createdBy: this.clotheForm.get('createdBy').value
     }
 
     // No se que tendria que poner en vez de category
-    this.clothingService.postClothing(clothing)
+    this.clotheService.postClothe(clothe)
       .subscribe(() => {
         location.replace('');
       });
@@ -91,7 +91,7 @@ export class ClothingComponent implements OnInit {
   }
 
   onUpload() {
-    this.clothingService.postMediaClothe(
+    this.clotheService.postMediaClothe(
       this.selectedFile).subscribe(result => {
       this.handleProgress(result);
     }, error => {
@@ -115,7 +115,7 @@ export class ClothingComponent implements OnInit {
       this.uploadingProgressing = false;
       this.serverResponse = event.body;
 
-      this.clothingForm.get('image').setValue(event.body['@id']);
+      this.clotheForm.get('image').setValue(event.body['@id']);
     }
   }
 
