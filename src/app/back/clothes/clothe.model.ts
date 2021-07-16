@@ -7,9 +7,11 @@ export class Clothe {
     title: string
     description: string
     price: string
-    popularity: string
-    impacts: number
-    is_recommended: number
+    popularity?;
+    impacts?;
+    isRecommended: number
+    categories;
+    image;
     constructor(values: any = {}) {
         Object.assign(this, values);
     }

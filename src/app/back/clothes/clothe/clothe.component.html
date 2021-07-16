@@ -1,3 +1,4 @@
+<h2>{{title}}</h2>
 <form [formGroup]="clotheForm" class="p-4">
   <div class="form-group">
     <label for="InputUserName">Título</label><!-- string -->
@@ -56,5 +57,5 @@
   <button class="btn btn-success uploader float-none" type="button"  (click)="onUpload()" [disabled]="uploadingProgressing">
     <span>Subir imagen</span>
   </button>
-  <button type="submit" class="btn  btn-outline-dark btn-lg btn-block" (click)="CreateClothe()">Crear</button>
+  <button type="submit" class="btn  btn-outline-dark btn-lg btn-block" (click)="setClothe()">{{clothe ? 'Guardar' : 'Crear'}}</button>
 </form>

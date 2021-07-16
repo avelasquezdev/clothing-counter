@@ -11,7 +11,7 @@ import { CategoryService } from '../category.service';
 })
 export class CategoryComponent implements OnInit {
   categoryForm: FormGroup;
-  title = 'Nueva categoria';
+  title = 'Nueva categoría';
   category: Category;
   constructor(
     private fb: FormBuilder,
@@ -24,7 +24,7 @@ export class CategoryComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.activatedRoute.snapshot.params.id) {
-      this.title = 'Editar categoria';
+      this.title = 'Editar categoría';
       this.editCategory(this.activatedRoute.snapshot.params.id);
     }
   }

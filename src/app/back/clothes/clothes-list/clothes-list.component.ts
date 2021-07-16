@@ -42,7 +42,7 @@ export class ClothesListComponent implements OnInit {
       { prop: 'price', name: 'Precio' },
       { prop: 'popularity', name: 'Popularidad' },
       { prop: 'impacts', name: 'Impactos' },
-      { prop: 'isRecommended', name: 'Recomendación' },
+      { prop: 'isRecommended', name: 'Recomendado' },
     ];
   }
 

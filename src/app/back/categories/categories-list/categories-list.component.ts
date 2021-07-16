@@ -49,7 +49,7 @@ export class CategoriesListComponent implements OnInit {
     this.categoriesService.deleteCategory(categoryId).subscribe(
       (result) => {
         this.alert.type = 1;
-        this.alert.message = 'Categoria eliminada correctamente';
+        this.alert.message = 'Categoría eliminada correctamente';
         setTimeout(() => {
           this.alert = { message: null, type: null };
         }, 5000);

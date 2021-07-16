@@ -6,11 +6,11 @@
         <ul class="nav border-bottom">
             <li class="nav-item">
               <a *ngIf="!authService.getIsAdmin()" class="nav-link" routerLink="about-us">Nosotros</a>
-              <a *ngIf="authService.getIsAdmin()" class="nav-link" routerLink="clothing-list">Artículos</a>
+              <a *ngIf="authService.getIsAdmin()" class="nav-link" routerLink="clothes-list">Artículos</a>
             </li>
             <li class="nav-item">
               <a *ngIf="!authService.getIsAdmin()" class="nav-link" routerLink="collections">Colecciones</a>
-              <a *ngIf="authService.getIsAdmin()" class="nav-link" routerLink="categories-list">Categorias</a>
+              <a *ngIf="authService.getIsAdmin()" class="nav-link" routerLink="categories-list">Categorías</a>
             </li>
             <li class="nav-item">
               <a *ngIf="!authService.getIsAdmin()" class="nav-link" routerLink="companies">Empresas</a>

@@ -82,7 +82,7 @@ export class AuthService {
     localStorage.removeItem('user');
     localStorage.removeItem('refresh_token');
 
-    // this.router.navigate(['/login']);
+    this.router.navigate(['']);
   }
 
   isAuthenticated(): Observable<boolean> {

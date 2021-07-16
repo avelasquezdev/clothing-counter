@@ -4,6 +4,8 @@ import { HttpEventType } from '@angular/common/http';
 import { AuthService } from 'src/app/shared/auth/auth.service';
 import { CategoryService } from '../../categories/category.service';
 import { ClotheService } from '../clothe.service';
+import { Clothe } from '../clothe.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-clothe',
@@ -12,6 +14,8 @@ import { ClotheService } from '../clothe.service';
 })
 export class ClotheComponent implements OnInit {
   clotheForm: FormGroup;
+  title = 'Nuevo artículo';
+  clothe: Clothe;
   categories;
   fileName = '';
   selectedFile: File;
@@ -31,7 +35,8 @@ export class ClotheComponent implements OnInit {
     private el: ElementRef,
     private clotheService: ClotheService,
     private categoryService: CategoryService,
-    private authService: AuthService
+    private authService: AuthService,
+    private activatedRoute: ActivatedRoute
   ) {
     this.createForm();
   }
@@ -40,6 +45,10 @@ export class ClotheComponent implements OnInit {
     this.categoryService.getCategories().subscribe(categories => {
       this.categories = categories['hydra:member']
     })
+    if (this.activatedRoute.snapshot.params.id) {
+      this.title = 'Editar artículo';
+      this.editClothe(this.activatedRoute.snapshot.params.id);
+    }
   }
 
   createForm() {
@@ -54,7 +63,19 @@ export class ClotheComponent implements OnInit {
     })
   }
 
-  CreateClothe() {
+  editClothe(id) {
+    this.clotheService.getClothe(id).subscribe((clothe: Clothe) => {
+      this.clothe = clothe;
+      this.clotheForm.get('title').setValue(clothe.title);
+      this.clotheForm.get('description').setValue(clothe.description);
+      this.clotheForm.get('price').setValue(clothe.price);
+      this.clotheForm.get('isRecommended').setValue(clothe.isRecommended);
+      this.clotheForm.get('categories').setValue(clothe.categories[0]);
+      this.clotheForm.get('image').setValue(clothe.image['@id']);
+    })
+  }
+
+  setClothe() {
     if (this.clotheForm.invalid) {
       this.showErrors(this.clotheForm)
     }
@@ -69,15 +90,22 @@ export class ClotheComponent implements OnInit {
       createdBy: this.clotheForm.get('createdBy').value
     }
 
-    this.clotheService.postClothe(clothe)
-      .subscribe(() => {
-        location.replace('');
-      });
+    if (this.clothe) {
+      this.clotheService.putClothe(this.clothe['@id'], clothe)
+        .subscribe(() => {
+          location.replace('/clothes-list');
+        });
+    } else {
+      this.clotheService.postClothe(clothe)
+        .subscribe(() => {
+          location.replace('');
+        });
+    }
   }
 
   onFileChanged(event) {
-    if (event[ 0 ].type === 'image/jpeg' || event[ 0 ].type === 'image/png') {
-      this.selectedFile = event[ 0 ];
+    if (event[0].type === 'image/jpeg' || event[0].type === 'image/png') {
+      this.selectedFile = event[0];
       const reader = new FileReader();
 
       reader.onload = (event: any) => {
@@ -92,10 +120,10 @@ export class ClotheComponent implements OnInit {
   onUpload() {
     this.clotheService.postMediaClothe(
       this.selectedFile).subscribe(result => {
-      this.handleProgress(result);
-    }, error => {
-      console.log(error);
-    });
+        this.handleProgress(result);
+      }, error => {
+        console.log(error);
+      });
   }
 
   handleProgress(event) {

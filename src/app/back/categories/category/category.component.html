@@ -1,7 +1,7 @@
-<h2>{{title}} prueba</h2>
+<h2>{{title}}</h2>
 <form [formGroup]="categoryForm" class="p-4">
     <div class="form-group">
-        <label for="InputUserName">Nombre de Categoria</label>
+        <label for="InputUserName">Nombre de Categoría</label>
         <input type="text" class="form-control" id="InputName" aria-describedby="categoryname" formControlName="name" required>
     </div>
     <button type="submit" class="btn btn-outline-dark btn-lg btn-block" (click)="setCategory()">{{category ? 'Guardar' : 'Crear'}}</button>

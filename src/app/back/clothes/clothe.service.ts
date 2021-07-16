@@ -39,7 +39,7 @@ export class ClotheService {
 
   public putClothe(id: string, clothe: Clothe): Observable<Clothe> {
     return this.http
-      .put<Clothe>(API_URL + '/clothes/' + id, clothe);
+      .put<Clothe>(API_URL + id, clothe);
   }
 
   postMediaClothe(fileItem: File, extraData?: object): Observable<any> {
