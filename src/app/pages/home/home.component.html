@@ -4,52 +4,110 @@
         <div class="">
             <h6 class="ml-5 mt-4 mb-2">Popularidad</h6>
             <form class="row ml-5 mt-4">
-                <div class="mr-4 form-group form-check">
+                <div class="mr-4 form-group form-check" id="checkTendencia">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Tendencias</label>
+                    <label class="form-check-label" id="checkTendencia2" for="exampleCheck1">Tendencias</label>
                 </div>
-                <div class="mr-4 form-group form-check">
+                <div class="mr-4 form-group form-check" id="checkModa">
                     <input type="checkbox" class="form-check-input" id="exampleCheck2">
-                    <label class="form-check-label" for="exampleCheck2">A la moda</label>
+                    <label class="form-check-label" id="checkModa2" for="exampleCheck2">A la moda</label>
                 </div>
-                <div class="mr-4 form-group form-check">
+                <div class="mr-4 form-group form-check" id="checkNadaMal">
                     <input type="checkbox" class="form-check-input" id="exampleCheck3">
-                    <label class="form-check-label" for="exampleCheck3">Nada mal</label>
+                    <label class="form-check-label" id="checkNadaMal2" for="exampleCheck3">Nada mal</label>
                 </div>
-                <div class="mr-4 form-group form-check">
+                <div class="mr-4 form-group form-check" id="checkMejorar">
                     <input type="checkbox" class="form-check-input" id="exampleCheck4">
-                    <label class="form-check-label" for="exampleCheck4">Puede mejorar</label>
+                    <label class="form-check-label" id="checkMejorar2" for="exampleCheck4">Puede mejorar</label>
                 </div>
             </form>
         </div>
         <hr>
         <!-- Filtros tipo de ropa -->
         <div class="">
+            <h6 class="ml-5 mt-4 mb-2">Tipo De Ropa</h6>
+            <form class="row ml-5 mt-4">
+                <div class="mr-4 form-group form-check checkGeneral">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck5">
+                    <label class="form-check-label" id="checkGeneral2" for="exampleCheck5">Gorras</label>
+                </div>
+                <div class="mr-4 form-group form-check checkGeneral">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck6">
+                    <label class="form-check-label" id="checkGeneral2" for="exampleCheck6">Camisas</label>
+                </div>
+                <div class="mr-4 form-group form-check checkGeneral">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck7">
+                    <label class="form-check-label" id="checkGeneral2" for="exampleCheck7">Sudaderas</label>
+                </div>
+                <div class="mr-4 form-group form-check checkGeneral">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck8">
+                    <label class="form-check-label" id="checkGeneral2" for="exampleCheck8">Chaquetas</label>
+                </div>
+                <div class="mr-4 form-group form-check checkGeneral">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck9">
+                    <label class="form-check-label" id="checkGeneral2" for="exampleCheck9">Pantalones</label>
+                </div>
+                <div class="mr-4 form-group form-check checkGeneral">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck10">
+                    <label class="form-check-label" id="checkGeneral2" for="exampleCheck10">Zapatos</label>
+                </div>
+            </form>
+        </div>
+        <hr>
+        <!-- Otros Filtros -->
+        <div class="">
             <h6 class="ml-5 mt-4 mb-2">+Filtros</h6>
             <form class="row ml-5 mt-4">
-                <div class="mr-4 form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck5">
-                    <label class="form-check-label" for="exampleCheck5">Gorras</label>
+                <div class="mr-4 form-group form-check checkGeneral">
+                    <label class="form-check-label" for="inputMultipleSelect1">Ordenar por</label>
+                    <select multiple class="form-control" name="inputMultipleSelect1" id="inputMultipleSelect1">
+                        <option>Nombre</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
                 </div>
-                <div class="mr-4 form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck6">
-                    <label class="form-check-label" for="exampleCheck6">Camisas</label>
+                <div class="mr-4 form-group form-check checkGeneral">
+                    <label class="form-check-label" for="inputRange1">Precio</label>
+                    <input type="range" class="custom-range" id="inputRange1">
                 </div>
-                <div class="mr-4 form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck7">
-                    <label class="form-check-label" for="exampleCheck7">Sudaderas</label>
+                <div class="mr-4 form-group form-check checkGeneral">
+                    <label class="form-check-label" for="inputMultipleSelect2">Talla</label>
+                    <select multiple class="form-control" name="inputMultipleSelect2" id="inputMultipleSelect2">
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                        <option>XXL</option>
+                    </select>
                 </div>
-                <div class="mr-4 form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck8">
-                    <label class="form-check-label" for="exampleCheck8">Chaquetas</label>
+                <div class="mr-4 form-group form-check checkGeneral">
+                    <label class="form-check-label" for="inputMultipleSelect3">Marca</label>
+                    <select multiple class="form-control" name="inputMultipleSelect3" id="inputMultipleSelect3">
+                        <option>Amazon</option>
+                        <option>Zara</option>
+                        <option>Kiabi</option>
+                    </select>
                 </div>
-                <div class="mr-4 form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck9">
-                    <label class="form-check-label" for="exampleCheck9">Pantalones</label>
+                <div class="mr-4 form-group form-check checkGeneral">
+                    <label class="form-check-label" for="inputMultipleSelect4">Materiales</label>
+                    <select multiple class="form-control" name="inputMultipleSelect4" id="inputMultipleSelect4">
+                        <option>Algodon</option>
+                        <option>Cuero</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
                 </div>
-                <div class="mr-4 form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck10">
-                    <label class="form-check-label" for="exampleCheck10">Zapatos</label>
+                <div class="mr-4 form-group form-check checkGeneral">
+                    <label class="form-check-label" for="inputMultipleSelect5">Colores</label>
+                    <select multiple class="form-control" name="inputMultipleSelect5" id="inputMultipleSelect5">
+                        <option>Azul</option>
+                        <option>Verde</option>
+                        <option>Amarillo</option>
+                        <option>Negro</option>
+                        <option>Gris</option>
+                    </select>
                 </div>
             </form>
         </div>

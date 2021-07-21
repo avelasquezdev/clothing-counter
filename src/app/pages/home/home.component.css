@@ -2,23 +2,71 @@ img {
     height: 200px;
     width: 200px;
 }
+
 .card-footer {
     width: 100%;
 }
+
 .progress {
     border: 2px dashed rgba(0, 0, 0, 0.125);
 }
 
-.form-check {
+/* .form-check {
     border-bottom: 1px solid #343a40c0;
     width: fit-content;
+} */
+
+/* Filtros Generales */
+
+.checkGeneral :hover {
+    /* Color provisional */
+    color: rgb(0, 183, 255);
 }
 
-.form-check :hover {
-    /* border: 2px outset #343a40c0;
-    padding: 2px; */
-    color: red;
+input[type="checkbox"]:checked + #checkGeneral2 {
+    color: rgb(0, 183, 255);
 }
+/* ------------------ */
+
+/* Filtros Popularidad */
+
+#checkTendencia :hover {
+    /* Color provisional */
+    color: rgb(218, 24, 24);
+}
+
+input[type="checkbox"]:checked + #checkTendencia2 {
+    color: rgb(218, 24, 24);
+}
+
+#checkModa :hover {
+    /* Color provisional */
+    color: rgb(143, 145, 34);
+}
+
+input[type="checkbox"]:checked + #checkModa2 {
+    color: rgb(143, 145, 34);
+}
+
+#checkNadaMal :hover {
+    /* Color provisional */
+    color: rgb(10, 110, 15);
+}
+
+input[type="checkbox"]:checked + #checkNadaMal2 {
+    color: rgb(10, 110, 15);
+}
+
+#checkMejorar :hover {
+    /* Color provisional */
+    color: rgb(0, 85, 241);
+}
+
+input[type="checkbox"]:checked + #checkMejorar2 {
+    color: rgb(0, 85, 241);
+}
+
+/* ------------------ */
 
 .buttonFilter {
     border-color: #343a40;
@@ -56,7 +104,6 @@ a {
     .filtersmovile {
         display: block;
     }
-
     .filtersPc {
         display: none;
     }
