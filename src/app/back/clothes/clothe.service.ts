@@ -59,4 +59,9 @@ export class ClotheService {
     });
     return this.http.request(req);
   }
+
+  addImpact(id): Observable<any> {
+    return this.http
+      .get<Clothe>(API_URL + `/clothes/${id}/add_impact/`);
+  }
 }

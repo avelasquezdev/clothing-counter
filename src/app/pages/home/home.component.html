@@ -132,34 +132,40 @@
             </div>
         </ng-template>
     </div>
-    <!-- <div class="">
-        <button class="btn btn-lg buttonFilter btn-outline-dark" type="button" data-toggle="collapse"
-            data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            Filtros
-        </button>
-        <div class="collapse" id="collapseExample">
-            <div class="card card-body">
-                <form action="post">
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                <label class="custom-control-label" for="customCheck1">Camisetas</label>
-                            </div>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                <label class="custom-control-label" for="customCheck1">Pantalones</label>
-                            </div>
+    <div class="row p-5">
+        <div *ngFor="let clothe of clothes" class="col-lg-4 col-md-6 col-sm-12 mb-3">
+            <div class="card">
+                <div class="text-center w-100">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger"
+                            role="progressbar" title="Tendencia" aria-valuenow="97" aria-valuemin="0"
+                            aria-valuemax="100" style="width: 97%">
                         </div>
                     </div>
-                </form>
+                    <img [src]="'http://localhost:8000/media/'+clothe['image']['filePath']"
+                        class="card-img-top m-5" alt="...">
+                </div>
+                <div class="card-body border-top">
+                    <h5 class="card-title"> <a
+                            href="https://www.zalando.es/mango-real-sudadera-blau-m9122s0a6-k11.html?size=M&allophones=0&wmc=SEM340_NB_GO._3922365855_673823494_29767381890.&opc=2211&mpp=google%7cv1%7c%7cpla-262301597036%7c%7c1005517%7c%7cg%7cc%7c%7c149794006548%7c%7cpla%7cM9122S0A6-K11000M000%7c262301597036%7c1%7c&gclid=Cj0KCQjw8vqGBhC_ARIsADMSd1AA3vj2VDaZVTsCmZrEsV_bBii0iDdzdWQBhnYWoMFMOQ-afAOS4h8aAmF1EALw_wcB&gclsrc=aw.ds"
+                            target="_blank" (click)="addImpact(clothe['@id'].replace('/clothes/', ''))">{{clothe['title']}}</a></h5>
+                    <p class="card-text">{{clothe['description']}}</p>
+                    <h6 class="card-text">Impactos: <strong>{{clothe['impacts']}}</strong></h6>
+                    <h3 class="card-text text-right">{{clothe['price']}}€</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-8">
+                            <h6 class="text-muted">{{clothe['createdAt']}}</h6>
+                        </div>
+                        <span class="col-4 text-right">
+                            <i class="fa fa-heart fa-lg" style="color: #dc3545;"></i>
+                        </span>
+                    </div>
+                </div>
             </div>
         </div>
-    </div> -->
-    <div class="row p-5">
-        <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+        <!-- <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
             <div class="card">
                 <div class="text-center w-100">
                     <div class="progress">
@@ -349,5 +355,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
+</div>
