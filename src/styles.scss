@@ -3,6 +3,7 @@
 @import '~@swimlane/ngx-datatable/index.css';
 @import '~@swimlane/ngx-datatable/themes/bootstrap.scss';
 @import '~@swimlane/ngx-datatable/assets/icons.css';
+@import "~@ng-select/ng-select/themes/ant.design.theme.css";
 
 // ngx-datatable styles
 body  .ngx-datatable.bootstrap .datatable-body .datatable-body-row.datatable-row-even {
@@ -31,3 +32,24 @@ body  .ngx-datatable.bootstrap .datatable-body .datatable-body-row.datatable-row
   .ngx-datatable.bootstrap .btn {
     margin-bottom: 30px;
   }
+
+  // Ng Select
+.ng-select .ng-select-container {
+  border-radius: $border-radius;
+  padding: 0.375rem 0.75rem;
+}
+.ng-select.ng-select-opened>.ng-select-container {
+  border-color: $pink;
+  box-shadow: 0 0 0 2px rgba($pink,0.2);
+}
+.ng-select.ng-select-single .ng-select-container .ng-value-container .ng-input {
+  top: 0.375rem;
+}
+.ng-select .ng-arrow-wrapper .ng-arrow {
+  width: 10px !important;
+  height: 10px !important;
+}
+.ng-select .ng-clear-wrapper {
+  right: -16px;
+  height: 18px;
+}

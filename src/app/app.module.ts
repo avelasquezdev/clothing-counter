@@ -27,6 +27,7 @@ import { ClotheService } from './back/clothes/clothe.service';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CategoriesListComponent } from './back/categories/categories-list/categories-list.component';
 import { ClothesListComponent } from './back/clothes/clothes-list/clothes-list.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ClothesListComponent } from './back/clothes/clothes-list/clothes-list.c
     ModalModule.forRoot(),
     ReactiveFormsModule,
     HttpClientModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    NgSelectModule
   ],
   providers: [
     {

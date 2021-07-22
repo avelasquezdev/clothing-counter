@@ -29,6 +29,13 @@ export class ClotheService {
 
     let httpParams = new HttpParams();
 
+    if (filters['price']) {
+      httpParams = httpParams.set('price[lte]', String(filters.price));
+    }
+    if (filters['isTrending']) {
+      httpParams = httpParams.set('popularity', 'Tendencias');
+    }
+
     return this.http
       .get<ClotheCollection>(API_URL + '/clothes', { params: httpParams });
   }
