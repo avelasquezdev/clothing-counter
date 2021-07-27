@@ -9,7 +9,7 @@ import { CategoryComponent } from './back/categories/category/category.component
 import { ClotheComponent } from './back/clothes/clothe/clothe.component';
 import { CategoriesListComponent } from './back/categories/categories-list/categories-list.component';
 import { ClothesListComponent } from './back/clothes/clothes-list/clothes-list.component';
-
+import { UsersListComponent } from './back/users/users-list/users-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent }, 
@@ -22,7 +22,10 @@ const routes: Routes = [
   { path: 'categories-list', component:  CategoriesListComponent },
   { path: 'new-clothe', component: ClotheComponent },
   { path: 'edit-clothe/:id', component: ClotheComponent },
-  { path: 'clothes-list', component: ClothesListComponent }
+  { path: 'clothes-list', component: ClothesListComponent },
+  { path: 'new-user', component: UsersListComponent },
+  { path: 'edit-user/:id', component: UsersListComponent },
+  { path: 'users-list', component: UsersListComponent }
 ];
 
 @NgModule({

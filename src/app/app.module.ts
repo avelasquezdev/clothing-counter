@@ -28,6 +28,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CategoriesListComponent } from './back/categories/categories-list/categories-list.component';
 import { ClothesListComponent } from './back/clothes/clothes-list/clothes-list.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { UsersListComponent } from './back/users/users-list/users-list.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     CategoryComponent,
     CategoriesListComponent,
     ClotheComponent,
-    ClothesListComponent
+    ClothesListComponent,
+    UsersListComponent
   ],
   imports: [
     BrowserModule,
