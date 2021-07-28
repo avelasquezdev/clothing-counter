@@ -28,6 +28,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CategoriesListComponent } from './back/categories/categories-list/categories-list.component';
 import { ClothesListComponent } from './back/clothes/clothes-list/clothes-list.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { ProgressbarModule,ProgressbarConfig } from 'ngx-bootstrap/progressbar';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     ReactiveFormsModule,
     HttpClientModule,
     NgxDatatableModule,
-    NgSelectModule
+    NgSelectModule,
+    ProgressbarModule
   ],
   providers: [
     {
@@ -68,7 +70,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     AuthGuard,
     LoggedInGuard,
     CategoryService,
-    ClotheService,],
+    ClotheService,
+    ProgressbarConfig],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -21,6 +21,8 @@ export class HomeComponent implements OnInit {
   sizesSelected = [];
   brands = ['Amazon', 'Kiabi', 'Shein', 'Aliexpress', 'Zalando'];
   brandsSelected = [];
+  dynamic = 0;
+  type: 'success' | 'info' | 'warning' | 'danger';
   constructor(
     private formBuilder: FormBuilder,
     private modalService: BsModalService,
@@ -39,7 +41,7 @@ export class HomeComponent implements OnInit {
   }
 
   onChanges(): void {
-    this.filtersForm.valueChanges.subscribe( () => {
+    this.filtersForm.valueChanges.subscribe(() => {
       this.clotheService.getClothes(this.filtersForm.value).subscribe(clothes => {
         this.clothes = clothes['hydra:member'];
       })
@@ -75,5 +77,32 @@ export class HomeComponent implements OnInit {
         this.clothes = clothes['hydra:member'];
       })
     })
+  }
+
+  getType(value) {
+    let type;
+    if (value < 25) {
+      type = 'success';
+    } else if (value < 50) {
+      type = 'info';
+    } else if (value < 75) {
+      type = 'warning';
+    } else {
+      type = 'danger';
+    }
+
+    this.type = type;
+  }
+
+  getValue(value) {
+    return value;
+    /* while(i<value) {
+      i++;
+      console.log(i);
+      setTimeout(() => {
+        this.getValue(i, value);
+      }, 1000);
+      return i;
+    } */
   }
 }

@@ -35,6 +35,33 @@ export class ClotheService {
     if (filters['isTrending']) {
       httpParams = httpParams.set('popularity', 'Tendencias');
     }
+    if (filters['isFashion']) {
+      httpParams = httpParams.set('popularity', 'Moda');
+    }
+    if (filters['isGood']) {
+      httpParams = httpParams.set('popularity', 'Bien');
+    }
+    if (filters['isOk']) {
+      httpParams = httpParams.set('popularity', 'Ok');
+    }
+    if (filters['isHats']) {
+      httpParams = httpParams.append('categories.name[]', 'Gorra');
+    }
+    if (filters['isShirts']) {
+      httpParams = httpParams.append('categories.name[]', 'Camisa');
+    }
+    if (filters['isHodies']) {
+      httpParams = httpParams.append('categories.name[]', 'Sudadera');
+    }
+    if (filters['isJackets']) {
+      httpParams = httpParams.append('categories.name[]', 'Chaqueta');
+    }
+    if (filters['isPants']) {
+      httpParams = httpParams.append('categories.name[]', 'Pantalon');
+    }
+    if (filters['isShoes']) {
+      httpParams = httpParams.append('categories.name[]', 'zapato');
+    }
 
     return this.http
       .get<ClotheCollection>(API_URL + '/clothes', { params: httpParams });

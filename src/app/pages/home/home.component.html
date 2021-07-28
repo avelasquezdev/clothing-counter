@@ -208,12 +208,15 @@
         <div *ngFor="let clothe of clothes" class="col-lg-4 col-md-6 col-sm-12 mb-3">
             <div class="card">
                 <div class="text-center w-100">
-                    <div class="progress">
+                    <div class="mb-3">
+                        <progressbar class="progress-striped active" [value]="getValue(clothe['percentage'])" [type]="getType(clothe['percentage'])">{{type}}</progressbar>
+                    </div>
+<!--                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger"
                             role="progressbar" title="Tendencia" aria-valuenow="97" aria-valuemin="0"
                             aria-valuemax="100" style="width: 97%">
                         </div>
-                    </div>
+                    </div> -->
                     <img [src]="'http://localhost:8000/media/'+clothe['image']['filePath']" class="card-img-top m-5"
                         alt="...">
                 </div>
