@@ -29,6 +29,7 @@ import { CategoriesListComponent } from './back/categories/categories-list/categ
 import { ClothesListComponent } from './back/clothes/clothes-list/clothes-list.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ProgressbarModule,ProgressbarConfig } from 'ngx-bootstrap/progressbar';
+import { UsersListComponent } from './back/users/users-list/users-list.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { ProgressbarModule,ProgressbarConfig } from 'ngx-bootstrap/progressbar';
     CategoryComponent,
     CategoriesListComponent,
     ClotheComponent,
-    ClothesListComponent
+    ClothesListComponent,
+    UsersListComponent
   ],
   imports: [
     BrowserModule,
