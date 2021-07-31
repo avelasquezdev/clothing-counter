@@ -76,6 +76,7 @@ export class AuthService {
   logout() {
     this.token = '';
     this.user = null;
+    this.isAdmin = null;
     this.refreshToken = '';
 
     localStorage.removeItem('token');

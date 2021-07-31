@@ -6,6 +6,11 @@
       required>
   </div>
   <div class="form-group">
+    <label for="InputUserName">Link</label><!-- string -->
+    <input type="text" class="form-control" id="InputTitle" aria-describedby="clothetitle" formControlName="link"
+      required>
+  </div>
+  <div class="form-group">
     <label for="InputUserName">Descripcción</label><!-- string -->
     <input type="text" class="form-control" id="InputDescription" aria-describedby="clothedescription"
       formControlName="description" required>
@@ -34,10 +39,29 @@
   </div>
   <div class="form-group">
     <label for="selectCategoria">Categoria</label>
-    <!-- Select / Habra que poner en las opciones un bucle para que ponga todas las de
-        la base de datos -->
     <select class="form-control" id="selectCategoria" formControlName="categories">
       <option *ngFor="let category of categories" [value]="[category['@id']]">{{category.name}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label class="form-check-label" for="inputMultipleSelect1">Color</label>
+    <ng-select bindLabel="Color" placeholder="Color" multiple="true" appendTo="body"
+        formControlName="colors" [(ngModel)]="colorsSelected">
+        <ng-option [value]="color" *ngFor="let color of colors">{{color}}</ng-option>
+    </ng-select>
+  </div>
+  <div class="form-group">
+    <label class="form-check-label" for="inputMultipleSelect2">Talla</label>
+    <ng-select bindLabel="Talla" placeholder="Talla" multiple="true" appendTo="body"
+        formControlName="sizes" [(ngModel)]="sizesSelected">
+        <ng-option [value]="size" *ngFor="let size of sizes">{{size}}</ng-option>
+    </ng-select>
+  </div>
+  <div class="form-group">
+    <label class="form-check-label" for="inputMultipleSelect3">Marca</label>
+    <select bindLabel="Marca" class="form-control" placeholder="Marca" appendTo="body"
+        formControlName="brand">
+        <option [value]="brand" *ngFor="let brand of brands">{{brand}}</option>
     </select>
   </div>
   <div class="custom-file">
@@ -54,7 +78,7 @@
     <label class="custom-file-label" #labelUpload for="media">Seleccionar una imagen</label>
   </div>
   <img [src]="image" alt="">
-  <button class="btn btn-success uploader float-none" type="button"  (click)="onUpload()" [disabled]="uploadingProgressing">
+  <button class="btn btn-success uploader float-none mb-5" type="button"  (click)="onUpload()" [disabled]="uploadingProgressing">
     <span>Subir imagen</span>
   </button>
   <button type="submit" class="btn  btn-outline-dark btn-lg btn-block" (click)="setClothe()">{{clothe ? 'Guardar' : 'Crear'}}</button>

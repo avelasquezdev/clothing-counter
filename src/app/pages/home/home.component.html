@@ -1,6 +1,6 @@
 <div class="bg-light">
     <div class="filtersPc">
-        <form [formGroup]="filtersForm">
+        <form [formGroup]="filtersForm" (change)="filterClothes()">
             <!-- Filtros cantidad de tendencia/popularidad -->
             <div class="">
                 <h6 class="ml-5 mt-4 mb-2">Popularidad</h6>
@@ -61,29 +61,29 @@
                 <div class="row ml-5 mt-4">
                     <div class="mr-4 form-group form-check checkGeneral">
                         <!-- <label class="form-check-label" for="inputMultipleSelect1">Color</label> -->
-                        <ng-select bindLabel="Color" placeholder="Color" multiple="true" appendTo="body"
-                            formControlName="colors" [(ngModel)]="colorsSelected">
+                        <ng-select bindLabel="Color" (change)="filterClothes()" placeholder="Color" multiple="true"
+                            appendTo="body" formControlName="colors" [(ngModel)]="colorsSelected">
                             <ng-option [value]="color" *ngFor="let color of colors">{{color}}</ng-option>
                         </ng-select>
                     </div>
                     <div class="mr-4 form-group form-check checkGeneral">
                         <!-- <label class="form-check-label" for="inputMultipleSelect2">Talla</label> -->
-                        <ng-select bindLabel="Talla" placeholder="Talla" multiple="true" appendTo="body"
-                            formControlName="sizes" [(ngModel)]="sizesSelected">
+                        <ng-select bindLabel="Talla" (change)="filterClothes()" placeholder="Talla" multiple="true"
+                            appendTo="body" formControlName="sizes" [(ngModel)]="sizesSelected">
                             <ng-option [value]="size" *ngFor="let size of sizes">{{size}}</ng-option>
                         </ng-select>
                     </div>
                     <div class="mr-4 form-group form-check checkGeneral">
                         <!-- <label class="form-check-label" for="inputMultipleSelect3">Marca</label> -->
-                        <ng-select bindLabel="Marca" placeholder="Marca" multiple="true" appendTo="body"
-                            formControlName="brands" [(ngModel)]="brandsSelected">
+                        <ng-select bindLabel="Marca" (change)="filterClothes()" placeholder="Marca" multiple="true"
+                            appendTo="body" formControlName="brands" [(ngModel)]="brandsSelected">
                             <ng-option [value]="brand" *ngFor="let brand of brands">{{brand}}</ng-option>
                         </ng-select>
                     </div>
                     <div class="mr-4 form-group form-check checkGeneral">
                         <!-- <label class="form-check-label" for="inputRange1">Precio</label> -->
-                        <ng-select bindLabel="Precio" placeholder="Precio" appendTo="body" formControlName="price"
-                            [(ngModel)]="pricesSelected">
+                        <ng-select bindLabel="Precio" (change)="filterClothes()" placeholder="Precio" appendTo="body"
+                            formControlName="price" [(ngModel)]="pricesSelected">
                             <ng-option [value]="price" *ngFor="let price of prices">{{price}}€</ng-option>
                         </ng-select>
                     </div>
@@ -109,94 +109,111 @@
                 </button>
             </div>
             <div class="modal-body">
-                <!-- Filtros cantidad de tendencia/popularidad -->
-                <div class="">
-                    <h6 class="ml-5 mt-4 mb-2">Popularidad</h6>
-                    <form class="row ml-5 mt-4">
-                        <div class="mr-4 form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Tendencias</label>
+                <form [formGroup]="filtersForm" (change)="filterClothes()">
+                    <!-- Filtros cantidad de tendencia/popularidad -->
+                    <div class="">
+                        <h6 class="ml-5 mt-4 mb-2">Popularidad</h6>
+                        <div class="row ml-5 mt-4">
+                            <div class="mr-4 form-group form-check">
+                                <input type="checkbox" formControlName="isTrending" class="form-check-input"
+                                    id="exampleCheck1">
+                                <label class="form-check-label" id="checkTendencia2"
+                                    for="exampleCheck1">Tendencias</label>
+                            </div>
+                            <div class="mr-4 form-group form-check" id="checkModa">
+                                <input type="checkbox" formControlName="isFashion" class="form-check-input"
+                                    id="exampleCheck2">
+                                <label class="form-check-label" id="checkModa2" for="exampleCheck2">A la moda</label>
+                            </div>
+                            <div class="mr-4 form-group form-check" id="checkNadaMal">
+                                <input type="checkbox" formControlName="isGood" class="form-check-input"
+                                    id="exampleCheck3">
+                                <label class="form-check-label" id="checkNadaMal2" for="exampleCheck3">Nada mal</label>
+                            </div>
+                            <div class="mr-4 form-group form-check" id="checkMejorar">
+                                <input type="checkbox" formControlName="isOk" class="form-check-input"
+                                    id="exampleCheck4">
+                                <label class="form-check-label" id="checkMejorar2" for="exampleCheck4">Puede
+                                    mejorar</label>
+                            </div>
                         </div>
-                        <div class="mr-4 form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck2">
-                            <label class="form-check-label" for="exampleCheck2">A la moda</label>
+                    </div>
+                    <hr>
+                    <!-- Filtros tipo de ropa -->
+                    <div class="">
+                        <h6 class="ml-5 mt-4 mb-2">Tipo De Ropa</h6>
+                        <div class="row ml-5 mt-4">
+                            <div class="mr-4 form-group form-check checkGeneral">
+                                <input type="checkbox" formControlName="isHats" class="form-check-input"
+                                    id="exampleCheck5">
+                                <label class="form-check-label" id="checkGeneral2" for="exampleCheck5">Gorras</label>
+                            </div>
+                            <div class="mr-4 form-group form-check checkGeneral">
+                                <input type="checkbox" formControlName="isShirts" class="form-check-input"
+                                    id="exampleCheck6">
+                                <label class="form-check-label" id="checkGeneral2" for="exampleCheck6">Camisas</label>
+                            </div>
+                            <div class="mr-4 form-group form-check checkGeneral">
+                                <input type="checkbox" formControlName="isHodies" class="form-check-input"
+                                    id="exampleCheck7">
+                                <label class="form-check-label" id="checkGeneral2" for="exampleCheck7">Sudaderas</label>
+                            </div>
+                            <div class="mr-4 form-group form-check checkGeneral">
+                                <input type="checkbox" formControlName="isJackets" class="form-check-input"
+                                    id="exampleCheck8">
+                                <label class="form-check-label" id="checkGeneral2" for="exampleCheck8">Chaquetas</label>
+                            </div>
+                            <div class="mr-4 form-group form-check checkGeneral">
+                                <input type="checkbox" formControlName="isPants" class="form-check-input"
+                                    id="exampleCheck9">
+                                <label class="form-check-label" id="checkGeneral2"
+                                    for="exampleCheck9">Pantalones</label>
+                            </div>
+                            <div class="mr-4 form-group form-check checkGeneral">
+                                <input type="checkbox" formControlName="isShoes" class="form-check-input"
+                                    id="exampleCheck10">
+                                <label class="form-check-label" id="checkGeneral2" for="exampleCheck10">Zapatos</label>
+                            </div>
                         </div>
-                        <div class="mr-4 form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck3">
-                            <label class="form-check-label" for="exampleCheck3">Nada mal</label>
+                    </div>
+                    <hr>
+                    <!-- Otros Filtros -->
+                    <div class="mb-5">
+                        <h6 class="ml-5 mt-4 mb-2">+Filtros</h6>
+                        <div class="row mt-4 mb-5">
+                            <div class="col-6 form-group form-check checkGeneral">
+                                <!-- <label class="form-check-label" for="inputMultipleSelect1">Color</label> -->
+                                <ng-select bindLabel="Color" (change)="filterClothes()" placeholder="Color"
+                                    multiple="true" appendTo="body" formControlName="colors"
+                                    [(ngModel)]="colorsSelected">
+                                    <ng-option [value]="color" *ngFor="let color of colors">{{color}}</ng-option>
+                                </ng-select>
+                            </div>
+                            <div class="col-6 form-group form-check checkGeneral">
+                                <!-- <label class="form-check-label" for="inputMultipleSelect2">Talla</label> -->
+                                <ng-select bindLabel="Talla" (change)="filterClothes()" placeholder="Talla"
+                                    multiple="true" appendTo="body" formControlName="sizes" [(ngModel)]="sizesSelected">
+                                    <ng-option [value]="size" *ngFor="let size of sizes">{{size}}</ng-option>
+                                </ng-select>
+                            </div>
+                            <div class="col-6 form-group form-check checkGeneral mb-5">
+                                <!-- <label class="form-check-label" for="inputMultipleSelect3">Marca</label> -->
+                                <ng-select bindLabel="Marca" (change)="filterClothes()" placeholder="Marca"
+                                    multiple="true" appendTo="body" formControlName="brands"
+                                    [(ngModel)]="brandsSelected">
+                                    <ng-option [value]="brand" *ngFor="let brand of brands">{{brand}}</ng-option>
+                                </ng-select>
+                            </div>
+                            <div class="col-6 form-group form-check checkGeneral mb-5">
+                                <!-- <label class="form-check-label" for="inputRange1">Precio</label> -->
+                                <ng-select bindLabel="Precio" (change)="filterClothes()" placeholder="Precio"
+                                    appendTo="body" formControlName="price" [(ngModel)]="pricesSelected">
+                                    <ng-option [value]="price" *ngFor="let price of prices">{{price}}€</ng-option>
+                                </ng-select>
+                            </div>
                         </div>
-                        <div class="mr-4 form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck4">
-                            <label class="form-check-label" for="exampleCheck4">Puede mejorar</label>
-                        </div>
-                    </form>
-                </div>
-                <hr>
-                <!-- Filtros tipo de ropa -->
-                <div class="">
-                    <h6 class="ml-5 mt-4 mb-2">Tipo De Ropa</h6>
-                    <form class="row ml-5 mt-4">
-                        <div class="mr-4 form-group form-check checkGeneral">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck5">
-                            <label class="form-check-label" id="checkGeneral2" for="exampleCheck5">Gorras</label>
-                        </div>
-                        <div class="mr-4 form-group form-check checkGeneral">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck6">
-                            <label class="form-check-label" id="checkGeneral2" for="exampleCheck6">Camisas</label>
-                        </div>
-                        <div class="mr-4 form-group form-check checkGeneral">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck7">
-                            <label class="form-check-label" id="checkGeneral2" for="exampleCheck7">Sudaderas</label>
-                        </div>
-                        <div class="mr-4 form-group form-check checkGeneral">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck8">
-                            <label class="form-check-label" id="checkGeneral2" for="exampleCheck8">Chaquetas</label>
-                        </div>
-                        <div class="mr-4 form-group form-check checkGeneral">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck9">
-                            <label class="form-check-label" id="checkGeneral2" for="exampleCheck9">Pantalones</label>
-                        </div>
-                        <div class="mr-4 form-group form-check checkGeneral">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck10">
-                            <label class="form-check-label" id="checkGeneral2" for="exampleCheck10">Zapatos</label>
-                        </div>
-                    </form>
-                </div>
-                <hr>
-                <!-- Otros Filtros -->
-                <div class="mb-5">
-                    <h6 class="ml-5 mt-4 mb-2">+Filtros</h6>
-                    <form [formGroup]="filtersForm" class="row mt-4 mb-5">
-                        <div class="col-6 form-group form-check checkGeneral">
-                            <!-- <label class="form-check-label" for="inputMultipleSelect1">Color</label> -->
-                            <ng-select bindLabel="Color" placeholder="Color" multiple="true" appendTo="body"
-                                formControlName="colors" [(ngModel)]="colorsSelected">
-                                <ng-option [value]="color" *ngFor="let color of colors">{{color}}</ng-option>
-                            </ng-select>
-                        </div>
-                        <div class="col-6 form-group form-check checkGeneral">
-                            <!-- <label class="form-check-label" for="inputMultipleSelect2">Talla</label> -->
-                            <ng-select bindLabel="Talla" placeholder="Talla" multiple="true" appendTo="body"
-                                formControlName="sizes" [(ngModel)]="sizesSelected">
-                                <ng-option [value]="size" *ngFor="let size of sizes">{{size}}</ng-option>
-                            </ng-select>
-                        </div>
-                        <div class="col-6 form-group form-check checkGeneral mb-5">
-                            <!-- <label class="form-check-label" for="inputMultipleSelect3">Marca</label> -->
-                            <ng-select bindLabel="Marca" placeholder="Marca" multiple="true" appendTo="body"
-                                formControlName="brands" [(ngModel)]="brandsSelected">
-                                <ng-option [value]="brand" *ngFor="let brand of brands">{{brand}}</ng-option>
-                            </ng-select>
-                        </div>
-                        <div class="col-6 form-group form-check checkGeneral mb-5">
-                            <!-- <label class="form-check-label" for="inputRange1">Precio</label> -->
-                            <ng-select bindLabel="Precio" placeholder="Precio" appendTo="body" formControlName="price"
-                                [(ngModel)]="pricesSelected">
-                                <ng-option [value]="price" *ngFor="let price of prices">{{price}}€</ng-option>
-                            </ng-select>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modalRef.hide()">Ver
@@ -209,21 +226,16 @@
             <div class="card">
                 <div class="text-center w-100">
                     <div class="mb-3">
-                        <progressbar class="progress-striped active" [value]="getValue(clothe['percentage'])" [type]="getType(clothe['percentage'])">{{type}}</progressbar>
+                        <progressbar class="progress-striped active" [value]="animation ? clothe['percentage'] : 0"
+                            [type]="getType(clothe['percentage'])"></progressbar>
                     </div>
-<!--                     <div class="progress">
-                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger"
-                            role="progressbar" title="Tendencia" aria-valuenow="97" aria-valuemin="0"
-                            aria-valuemax="100" style="width: 97%">
-                        </div>
-                    </div> -->
-                    <img [src]="'http://localhost:8000/media/'+clothe['image']['filePath']" class="card-img-top m-5"
-                        alt="...">
+                    <a [href]="clothe['link']" target="_blank"
+                        (click)="addImpact(clothe['@id'].replace('/clothes/', ''))"><img
+                            [src]="'http://localhost:8000/media/'+clothe['image']['filePath']" class="card-img-top m-5"
+                            [alt]="clothe['title']"></a>
                 </div>
                 <div class="card-body border-top">
-                    <h5 class="card-title"> <a
-                            href="https://www.zalando.es/mango-real-sudadera-blau-m9122s0a6-k11.html?size=M&allophones=0&wmc=SEM340_NB_GO._3922365855_673823494_29767381890.&opc=2211&mpp=google%7cv1%7c%7cpla-262301597036%7c%7c1005517%7c%7cg%7cc%7c%7c149794006548%7c%7cpla%7cM9122S0A6-K11000M000%7c262301597036%7c1%7c&gclid=Cj0KCQjw8vqGBhC_ARIsADMSd1AA3vj2VDaZVTsCmZrEsV_bBii0iDdzdWQBhnYWoMFMOQ-afAOS4h8aAmF1EALw_wcB&gclsrc=aw.ds"
-                            target="_blank"
+                    <h5 class="card-title"> <a [href]="clothe['link']" target="_blank"
                             (click)="addImpact(clothe['@id'].replace('/clothes/', ''))">{{clothe['title']}}</a></h5>
                     <p class="card-text">{{clothe['description']}}</p>
                     <h6 class="card-text">Impactos: <strong>{{clothe['impacts']}}</strong></h6>

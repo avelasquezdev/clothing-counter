@@ -4,13 +4,17 @@ export class ClotheCollection {
 
 export class Clothe {
     // Faltan campos
-    title: string
-    description: string
-    price: string
+    title: string;
+    link: string;
+    description: string;
+    price: string;
     popularity?;
     impacts?;
-    isRecommended: number
+    isRecommended: number;
     categories;
+    colors;
+    sizes;
+    brand: string;
     image;
     constructor(values: any = {}) {
         Object.assign(this, values);

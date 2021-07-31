@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ClotheService } from 'src/app/back/clothes/clothe.service';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -22,6 +23,7 @@ export class HomeComponent implements OnInit {
   brands = ['Amazon', 'Kiabi', 'Shein', 'Aliexpress', 'Zalando'];
   brandsSelected = [];
   dynamic = 0;
+  animation = false;
   type: 'success' | 'info' | 'warning' | 'danger';
   constructor(
     private formBuilder: FormBuilder,
@@ -34,6 +36,9 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.clotheService.getClothes().subscribe(clothes => {
       this.clothes = clothes['hydra:member'];
+      setTimeout(() => {
+        this.animation = true;
+      }, 500);
     })
     setTimeout(() => {
       this.onChanges();
@@ -41,10 +46,16 @@ export class HomeComponent implements OnInit {
   }
 
   onChanges(): void {
-    this.filtersForm.valueChanges.subscribe(() => {
-      this.clotheService.getClothes(this.filtersForm.value).subscribe(clothes => {
-        this.clothes = clothes['hydra:member'];
-      })
+
+  }
+
+  filterClothes() {
+    this.animation = false;
+    this.clotheService.getClothes(this.filtersForm.value).subscribe(clothes => {
+      this.clothes = clothes['hydra:member'];
+      setTimeout(() => {
+        this.animation = true;
+      }, 500);
     });
   }
 
@@ -73,7 +84,7 @@ export class HomeComponent implements OnInit {
 
   addImpact(clotheId) {
     this.clotheService.addImpact(clotheId).subscribe(() => {
-      this.clotheService.getClothes().subscribe(clothes => {
+      this.clotheService.getClothes(this.filtersForm.value).subscribe(clothes => {
         this.clothes = clothes['hydra:member'];
       })
     })
@@ -82,7 +93,7 @@ export class HomeComponent implements OnInit {
   getType(value) {
     let type;
     if (value < 25) {
-      type = 'success';
+      type = 'primary';
     } else if (value < 50) {
       type = 'info';
     } else if (value < 75) {
@@ -91,18 +102,6 @@ export class HomeComponent implements OnInit {
       type = 'danger';
     }
 
-    this.type = type;
-  }
-
-  getValue(value) {
-    return value;
-    /* while(i<value) {
-      i++;
-      console.log(i);
-      setTimeout(() => {
-        this.getValue(i, value);
-      }, 1000);
-      return i;
-    } */
+    return type;
   }
 }

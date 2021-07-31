@@ -33,16 +33,16 @@ export class ClotheService {
       httpParams = httpParams.set('price[lte]', String(filters.price));
     }
     if (filters['isTrending']) {
-      httpParams = httpParams.set('popularity', 'Tendencias');
+      httpParams = httpParams.append('popularity[]', 'Tendencia');
     }
     if (filters['isFashion']) {
-      httpParams = httpParams.set('popularity', 'Moda');
+      httpParams = httpParams.append('popularity[]', 'Moda');
     }
     if (filters['isGood']) {
-      httpParams = httpParams.set('popularity', 'Bien');
+      httpParams = httpParams.append('popularity[]', 'Bien');
     }
     if (filters['isOk']) {
-      httpParams = httpParams.set('popularity', 'Ok');
+      httpParams = httpParams.append('popularity[]', 'Ok');
     }
     if (filters['isHats']) {
       httpParams = httpParams.append('categories.name[]', 'Gorra');
@@ -61,6 +61,21 @@ export class ClotheService {
     }
     if (filters['isShoes']) {
       httpParams = httpParams.append('categories.name[]', 'zapato');
+    }
+    if (filters['sizes'] && filters['sizes'].length > 0) {
+      filters['sizes'].forEach(element => {
+        httpParams = httpParams.append('sizes[]', String(element).replace('S', 'Small'));
+      });
+    }
+    if (filters['colors'] && filters['colors'].length > 0) {
+      filters['colors'].forEach(element => {
+        httpParams = httpParams.append('colors[]', element);
+      });
+    }
+    if (filters['brands'] && filters['brands'].length > 0) {
+      filters['brands'].forEach(element => {
+        httpParams = httpParams.append('brand[]', element);
+      });
     }
 
     return this.http

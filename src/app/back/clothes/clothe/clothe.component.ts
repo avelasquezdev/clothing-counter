@@ -21,6 +21,11 @@ export class ClotheComponent implements OnInit {
   selectedFile: File;
   selectedFiles = [];
   uploadedFiles = [];
+  colors = ['Amarillo', 'Blanco', 'Azul', 'Negro', 'Verde'];
+  colorsSelected = [];
+  sizes = ['XS', 'Small', 'M', 'L', 'XL', 'XXL'];
+  sizesSelected = [];
+  brands = ['Amazon', 'Kiabi', 'Shein', 'Aliexpress', 'Zalando'];
   image = null;
   uploadingProgressing = false;
   uploadComplete = false;
@@ -54,10 +59,14 @@ export class ClotheComponent implements OnInit {
   createForm() {
     this.clotheForm = this.fb.group({
       title: ['', Validators.required],
+      link: ['', Validators.required],
       description: ['', Validators.required],
       price: ['0', Validators.required],
       isRecommended: [false, Validators.required],
       categories: [null, Validators.required],
+      colors: [null, Validators.required],
+      sizes: [null, Validators.required],
+      brand: ['', Validators.required],
       createdBy: ['/users/' + this.authService.getUserId(), Validators.required],
       image: ['', Validators.required]
     })
@@ -67,11 +76,18 @@ export class ClotheComponent implements OnInit {
     this.clotheService.getClothe(id).subscribe((clothe: Clothe) => {
       this.clothe = clothe;
       this.clotheForm.get('title').setValue(clothe.title);
+      this.clotheForm.get('link').setValue(clothe.link);
       this.clotheForm.get('description').setValue(clothe.description);
       this.clotheForm.get('price').setValue(clothe.price);
       this.clotheForm.get('isRecommended').setValue(clothe.isRecommended);
-      this.clotheForm.get('categories').setValue(clothe.categories[0]);
+      this.clotheForm.get('categories').setValue(clothe.categories[0]['@id']);
+      this.clotheForm.get('colors').setValue(clothe.colors[0]);
+      this.clotheForm.get('sizes').setValue(clothe.sizes[0]);
+      this.sizesSelected = this.clotheForm.get('sizes').value;
+      this.colorsSelected = this.clotheForm.get('colors').value;
+      this.clotheForm.get('brand').setValue(clothe.brand);
       this.clotheForm.get('image').setValue(clothe.image['@id']);
+      this.image = 'http://localhost:8000/media/'+clothe.image['filePath'];
     })
   }
 
@@ -82,10 +98,14 @@ export class ClotheComponent implements OnInit {
 
     const clothe = {
       title: this.clotheForm.get('title').value,
+      link: this.clotheForm.get('link').value,
       description: this.clotheForm.get('description').value,
       price: this.clotheForm.get('price').value,
       isRecommended: this.clotheForm.get('isRecommended').value,
       categories: [this.clotheForm.get('categories').value],
+      colors: [this.clotheForm.get('colors').value],
+      sizes: [this.clotheForm.get('sizes').value],
+      brand: this.clotheForm.get('brand').value,
       image: this.clotheForm.get('image').value,
       createdBy: this.clotheForm.get('createdBy').value
     }
