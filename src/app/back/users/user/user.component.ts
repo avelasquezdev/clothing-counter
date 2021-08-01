@@ -1,8 +1,8 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { User } from '../user.model';
-import { UserService } from '../user.service';
+import { User } from 'src/app/shared/users/user.model';
+import { UsersService } from 'src/app/shared/users/users.service';
 
 @Component({
   selector: 'app-user',
@@ -16,7 +16,7 @@ export class UserComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private el: ElementRef,
-    private userService: UserService,
+    private userService: UsersService,
     private activatedRoute: ActivatedRoute
   ) {
     this.createForm();
@@ -31,14 +31,18 @@ export class UserComponent implements OnInit {
 
   createForm() {
     this.userForm = this.fb.group({
-      name: ['', Validators.required]
+      username: ['', Validators.required],
+      email: ['', Validators.required],
+      password: ['', Validators.required]
     })
   }
 
   editUser(id) {
     this.userService.getUser(id).subscribe((user: User) => {
       this.user = user;
-      this.userForm.get('email').setValue(user.email); // Pongo email o username?
+      this.userForm.get('username').setValue(user['name']);
+      this.userForm.get('email').setValue(user.email);
+      this.userForm.get('password').setValue(user.password);
     })
   }
 
@@ -51,6 +55,7 @@ export class UserComponent implements OnInit {
       username: this.userForm.get('username').value,
       email: this.userForm.get('email').value,
       password: this.userForm.get('password').value,
+      roles: 'ROLE_USER'
     }
 
     if (this.user) {

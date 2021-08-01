@@ -3,11 +3,11 @@ export class UserCollection {
 }
 
 export class User {
-  id: string;
+  id?: string;
   email: string;
   username: string;
   password: string;
-  roles: any;
+  roles?: any;
   constructor(values: any = {}) {
     Object.assign(this, values);
   }

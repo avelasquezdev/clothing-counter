@@ -77,6 +77,9 @@ export class ClotheService {
         httpParams = httpParams.append('brand[]', element);
       });
     }
+    if (filters['title']) {
+      httpParams = httpParams.set('title', String(filters.title));
+    }
 
     return this.http
       .get<ClotheCollection>(API_URL + '/clothes', { params: httpParams });

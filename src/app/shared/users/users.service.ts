@@ -42,7 +42,7 @@ export class UsersService {
 
   public putUser(userId: string, user: User): Observable<User> {
     return this.http
-      .put<User>(API_URL + '/users/' + userId, user);
+      .put<User>(API_URL + userId, user);
   }
 
   forgotPassword(email: any) {

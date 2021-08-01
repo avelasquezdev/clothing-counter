@@ -29,6 +29,9 @@ export class CategoryService {
 
     let httpParams = new HttpParams();
 
+    if (filters['name']) {
+      httpParams = httpParams.set('name', String(filters.name));
+    }
     return this.http
       .get<CategoryCollection>(API_URL + '/categories', { params: httpParams });
   }
