@@ -10,21 +10,22 @@ import { ClotheComponent } from './back/clothes/clothe/clothe.component';
 import { CategoriesListComponent } from './back/categories/categories-list/categories-list.component';
 import { ClothesListComponent } from './back/clothes/clothes-list/clothes-list.component';
 import { UsersListComponent } from './back/users/users-list/users-list.component';
+import { UserComponent } from './back/users/user/user.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent }, 
-  { path: 'about-us', component: AboutUsComponent }, 
+  { path: '', component: HomeComponent },
+  { path: 'about-us', component: AboutUsComponent },
   { path: 'companies', component: BusinessComponent },
-  { path: 'login', component: LoginComponent }, 
+  { path: 'login', component: LoginComponent },
   { path: 'check-in', component: CheckInComponent },
   { path: 'new-category', component: CategoryComponent },
   { path: 'edit-category/:id', component: CategoryComponent },
-  { path: 'categories-list', component:  CategoriesListComponent },
+  { path: 'categories-list', component: CategoriesListComponent },
   { path: 'new-clothe', component: ClotheComponent },
   { path: 'edit-clothe/:id', component: ClotheComponent },
   { path: 'clothes-list', component: ClothesListComponent },
-  { path: 'new-user', component: UsersListComponent },
-  { path: 'edit-user/:id', component: UsersListComponent },
+  { path: 'new-user', component: UserComponent },
+  { path: 'edit-user/:id', component: UserComponent },
   { path: 'users-list', component: UsersListComponent }
 ];
 
