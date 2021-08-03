@@ -5,8 +5,9 @@
     <nav class="nav justify-content-center">
         <ul class="nav border-bottom">
             <li class="nav-item">
-              <a *ngIf="!authService.getIsAdmin()" class="nav-link" routerLink="about-us">Nosotros</a>
+              <a *ngIf="!authService.getIsAdmin()" class="nav-link" routerLink="about-us">Inicio</a>
               <a *ngIf="authService.getIsAdmin()" class="nav-link" routerLink="clothes-list">Artículos</a>
+              <a *ngIf="authService.isAuthenticated()" class="nav-link" routerLink="favorites">Favoritos</a>
             </li>
             <li class="nav-item">
               <a *ngIf="!authService.getIsAdmin()" class="nav-link" routerLink="collections">Colecciones</a>

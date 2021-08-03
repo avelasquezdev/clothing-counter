@@ -11,6 +11,7 @@ import { CategoriesListComponent } from './back/categories/categories-list/categ
 import { ClothesListComponent } from './back/clothes/clothes-list/clothes-list.component';
 import { UsersListComponent } from './back/users/users-list/users-list.component';
 import { UserComponent } from './back/users/user/user.component';
+import { FavoritesComponent } from './user/favorites/favorites.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,7 +27,8 @@ const routes: Routes = [
   { path: 'clothes-list', component: ClothesListComponent },
   { path: 'new-user', component: UserComponent },
   { path: 'edit-user/:id', component: UserComponent },
-  { path: 'users-list', component: UsersListComponent }
+  { path: 'users-list', component: UsersListComponent },
+  { path: 'favorites', component: FavoritesComponent }
 ];
 
 @NgModule({
