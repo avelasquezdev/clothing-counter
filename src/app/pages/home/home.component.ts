@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ClotheService } from 'src/app/back/clothes/clothe.service';
 import { timer } from 'rxjs';
+import { AuthService } from 'src/app/shared/auth/auth.service';
+import { UsersService } from 'src/app/shared/users/users.service';
+import { User } from 'src/app/shared/users/user.model';
 
 @Component({
   selector: 'app-home',
@@ -25,10 +28,14 @@ export class HomeComponent implements OnInit {
   dynamic = 0;
   animation = false;
   type: 'success' | 'info' | 'warning' | 'danger';
+  userClothes = [];
+  isAlertShown = false;
   constructor(
     private formBuilder: FormBuilder,
     private modalService: BsModalService,
-    private clotheService: ClotheService
+    private clotheService: ClotheService,
+    private authService: AuthService,
+    private userServices: UsersService
   ) {
     this.createForm();
   }
@@ -36,6 +43,11 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.clotheService.getClothes().subscribe(clothes => {
       this.clothes = clothes['hydra:member'];
+      if (this.authService.getUserId()) {
+        this.clotheService.getClothesByUserId(this.authService.getProfileId()).subscribe(clothes => {
+          this.userClothes = Array.from(clothes['hydra:member']).map((item) => item['@id']);
+        });
+      }
       setTimeout(() => {
         this.animation = true;
       }, 500);
@@ -103,5 +115,18 @@ export class HomeComponent implements OnInit {
     }
 
     return type;
+  }
+
+  clickFavorite(clotheId) {
+    if (this.authService.getUserId()) {
+      this.userClothes.includes(clotheId) ?
+        this.userClothes.splice(this.userClothes.indexOf(clotheId), 1) : this.userClothes.push(clotheId);
+      const userProfile = {
+        favs: this.userClothes
+      };
+      this.userServices.putUserProfile('/user_profiles/' + this.authService.getProfileId(), userProfile).subscribe();
+    } else {
+      location.replace('check-in');
+    }
   }
 }

@@ -45,6 +45,11 @@ export class UsersService {
       .put<User>(API_URL + userId, user);
   }
 
+  public putUserProfile(profileId: string, profile): Observable<any> {
+    return this.http
+      .put<any>(API_URL + profileId, profile);
+  }
+
   forgotPassword(email: any) {
     const url = API_URL + '/users/forgot-password-request';
 

@@ -246,8 +246,9 @@
                         <div class="col-8">
                             <h6 class="text-muted">{{clothe['createdAt']}}</h6>
                         </div>
-                        <span class="col-4 text-right">
-                            <i class="fa fa-heart fa-lg" style="color: #dc3545;"></i>
+                        <span (click)="clickFavorite(clothe['@id'])" class="col-4 text-right">
+                            <i *ngIf="userClothes.includes(clothe['@id'])" class="fa fa-heart fa-lg" style="color: #dc3545;"></i>
+                            <i *ngIf="!userClothes.includes(clothe['@id'])" class="fa fa-heartbeat fa-lg"></i>
                         </span>
                     </div>
                 </div>

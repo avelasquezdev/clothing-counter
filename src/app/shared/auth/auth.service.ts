@@ -134,7 +134,11 @@ export class AuthService {
   }
 
   getUserId() {
-    return this.user['id'];
+    return this.user ? this.user['id'] : null;
+  }
+
+  getProfileId() {
+    return this.user ? this.user['profileId'] : null;
   }
 
   getUserEmail() {

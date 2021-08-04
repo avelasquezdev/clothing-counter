@@ -85,6 +85,11 @@ export class ClotheService {
       .get<ClotheCollection>(API_URL + '/clothes', { params: httpParams });
   }
 
+  public getClothesByUserId(profileId: number): Observable<ClotheCollection> {
+    return this.http
+      .get<ClotheCollection>(API_URL + '/user_profiles/' + profileId + '/favs');
+  }
+
   public deleteClothe(id: string): any {
     return this.http.delete<Clothe>(API_URL + '/clothes/' + id);
   }
