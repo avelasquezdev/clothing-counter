@@ -3,7 +3,7 @@
 }
 
 .nav-item :hover {
-    border-bottom: 2px solid #343a40;
+    border-bottom: 0.2px solid #343a40;
 }
 
 @media (max-width: 500px) {
