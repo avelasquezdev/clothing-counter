@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ClotheService } from 'src/app/back/clothes/clothe.service';
 import { timer } from 'rxjs';
+import { AuthService } from 'src/app/shared/auth/auth.service';
 
 @Component({
   selector: 'app-favorites',
@@ -28,13 +29,14 @@ export class FavoritesComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private modalService: BsModalService,
-    private clotheService: ClotheService
+    private clotheService: ClotheService,
+    private authService: AuthService
   ) {
-    this.createForm();
+    // this.createForm();
   }
 
   ngOnInit(): void {
-    this.clotheService.getClothes().subscribe(clothes => {
+    this.clotheService.getClothesByUserId(this.authService.getProfileId()).subscribe(clothes => {
       this.clothes = clothes['hydra:member'];
       setTimeout(() => {
         this.animation = true;
@@ -49,38 +51,38 @@ export class FavoritesComponent implements OnInit {
 
   }
 
-  filterClothes() {
-    this.animation = false;
-    this.clotheService.getClothes(this.filtersForm.value).subscribe(clothes => {
-      this.clothes = clothes['hydra:member'];
-      setTimeout(() => {
-        this.animation = true;
-      }, 500);
-    });
-  }
+  // filterClothes() {
+  //   this.animation = false;
+  //   this.clotheService.getClothesByUserId(this.authService.getProfileId()).subscribe(clothes => {
+  //     this.clothes = clothes['hydra:member'];
+  //     setTimeout(() => {
+  //       this.animation = true;
+  //     }, 500);
+  //   });
+  // }
 
-  createForm() {
-    this.filtersForm = this.formBuilder.group({
-      isTrending: [false],
-      isFashion: [false],
-      isGood: [false],
-      isOk: [false],
-      isHats: [false],
-      isShirts: [false],
-      isHodies: [false],
-      isJackets: [false],
-      isPants: [false],
-      isShoes: [false],
-      colors: [''],
-      price: [''],
-      sizes: [''],
-      brands: [''],
-    })
-  }
+  // createForm() {
+  //   this.filtersForm = this.formBuilder.group({
+  //     isTrending: [false],
+  //     isFashion: [false],
+  //     isGood: [false],
+  //     isOk: [false],
+  //     isHats: [false],
+  //     isShirts: [false],
+  //     isHodies: [false],
+  //     isJackets: [false],
+  //     isPants: [false],
+  //     isShoes: [false],
+  //     colors: [''],
+  //     price: [''],
+  //     sizes: [''],
+  //     brands: [''],
+  //   })
+  // }
 
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
-  }
+  // openModal(template: TemplateRef<any>) {
+  //   this.modalRef = this.modalService.show(template);
+  // }
 
   addImpact(clotheId) {
     this.clotheService.addImpact(clotheId).subscribe(() => {

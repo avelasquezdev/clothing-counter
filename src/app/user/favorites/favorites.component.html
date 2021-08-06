@@ -1,7 +1,6 @@
 <div class="bg-light">
-    <div class="filtersPc">
+    <!-- <div class="filtersPc">
         <form [formGroup]="filtersForm" (change)="filterClothes()">
-            <!-- Filtros cantidad de tendencia/popularidad -->
             <div class="">
                 <h6 class="ml-5 mt-4 mb-2">Popularidad</h6>
                 <div class="row ml-5 mt-4">
@@ -24,7 +23,6 @@
                 </div>
             </div>
             <hr>
-            <!-- Filtros tipo de ropa -->
             <div class="">
                 <h6 class="ml-5 mt-4 mb-2">Tipo De Ropa</h6>
                 <div class="row ml-5 mt-4">
@@ -55,33 +53,28 @@
                 </div>
             </div>
             <hr>
-            <!-- Otros Filtros -->
             <div class="">
                 <h6 class="ml-5 mt-4 mb-2">+Filtros</h6>
                 <div class="row ml-5 mt-4">
                     <div class="mr-4 form-group form-check checkGeneral">
-                        <!-- <label class="form-check-label" for="inputMultipleSelect1">Color</label> -->
                         <ng-select bindLabel="Color" (change)="filterClothes()" placeholder="Color" multiple="true"
                             appendTo="body" formControlName="colors" [(ngModel)]="colorsSelected">
                             <ng-option [value]="color" *ngFor="let color of colors">{{color}}</ng-option>
                         </ng-select>
                     </div>
                     <div class="mr-4 form-group form-check checkGeneral">
-                        <!-- <label class="form-check-label" for="inputMultipleSelect2">Talla</label> -->
                         <ng-select bindLabel="Talla" (change)="filterClothes()" placeholder="Talla" multiple="true"
                             appendTo="body" formControlName="sizes" [(ngModel)]="sizesSelected">
                             <ng-option [value]="size" *ngFor="let size of sizes">{{size}}</ng-option>
                         </ng-select>
                     </div>
                     <div class="mr-4 form-group form-check checkGeneral">
-                        <!-- <label class="form-check-label" for="inputMultipleSelect3">Marca</label> -->
                         <ng-select bindLabel="Marca" (change)="filterClothes()" placeholder="Marca" multiple="true"
                             appendTo="body" formControlName="brands" [(ngModel)]="brandsSelected">
                             <ng-option [value]="brand" *ngFor="let brand of brands">{{brand}}</ng-option>
                         </ng-select>
                     </div>
                     <div class="mr-4 form-group form-check checkGeneral">
-                        <!-- <label class="form-check-label" for="inputRange1">Precio</label> -->
                         <ng-select bindLabel="Precio" (change)="filterClothes()" placeholder="Precio" appendTo="body"
                             formControlName="price" [(ngModel)]="pricesSelected">
                             <ng-option [value]="price" *ngFor="let price of prices">{{price}}€</ng-option>
@@ -91,16 +84,13 @@
             </div>
         </form>
     </div>
-    <!-- Filtros pero con modal para el movil -->
 
     <div class="mt-4 ml-4 filtersmovile">
-        <!-- Button trigger modal -->
         <button type="button" (click)="openModal(template)" class="btn btn-outline-dark" data-toggle="modal"
             data-target="#filtersModal">
             Filtros
         </button>
 
-        <!-- Modal -->
         <ng-template #template>
             <div class="modal-header">
                 <h5 class="modal-title" id="filtersModalLabel">Filtros</h5>
@@ -110,7 +100,6 @@
             </div>
             <div class="modal-body">
                 <form [formGroup]="filtersForm" (change)="filterClothes()">
-                    <!-- Filtros cantidad de tendencia/popularidad -->
                     <div class="">
                         <h6 class="ml-5 mt-4 mb-2">Popularidad</h6>
                         <div class="row ml-5 mt-4">
@@ -139,7 +128,6 @@
                         </div>
                     </div>
                     <hr>
-                    <!-- Filtros tipo de ropa -->
                     <div class="">
                         <h6 class="ml-5 mt-4 mb-2">Tipo De Ropa</h6>
                         <div class="row ml-5 mt-4">
@@ -177,12 +165,10 @@
                         </div>
                     </div>
                     <hr>
-                    <!-- Otros Filtros -->
                     <div class="mb-5">
                         <h6 class="ml-5 mt-4 mb-2">+Filtros</h6>
                         <div class="row mt-4 mb-5">
                             <div class="col-6 form-group form-check checkGeneral">
-                                <!-- <label class="form-check-label" for="inputMultipleSelect1">Color</label> -->
                                 <ng-select bindLabel="Color" (change)="filterClothes()" placeholder="Color"
                                     multiple="true" appendTo="body" formControlName="colors"
                                     [(ngModel)]="colorsSelected">
@@ -190,14 +176,12 @@
                                 </ng-select>
                             </div>
                             <div class="col-6 form-group form-check checkGeneral">
-                                <!-- <label class="form-check-label" for="inputMultipleSelect2">Talla</label> -->
                                 <ng-select bindLabel="Talla" (change)="filterClothes()" placeholder="Talla"
                                     multiple="true" appendTo="body" formControlName="sizes" [(ngModel)]="sizesSelected">
                                     <ng-option [value]="size" *ngFor="let size of sizes">{{size}}</ng-option>
                                 </ng-select>
                             </div>
                             <div class="col-6 form-group form-check checkGeneral mb-5">
-                                <!-- <label class="form-check-label" for="inputMultipleSelect3">Marca</label> -->
                                 <ng-select bindLabel="Marca" (change)="filterClothes()" placeholder="Marca"
                                     multiple="true" appendTo="body" formControlName="brands"
                                     [(ngModel)]="brandsSelected">
@@ -205,7 +189,6 @@
                                 </ng-select>
                             </div>
                             <div class="col-6 form-group form-check checkGeneral mb-5">
-                                <!-- <label class="form-check-label" for="inputRange1">Precio</label> -->
                                 <ng-select bindLabel="Precio" (change)="filterClothes()" placeholder="Precio"
                                     appendTo="body" formControlName="price" [(ngModel)]="pricesSelected">
                                     <ng-option [value]="price" *ngFor="let price of prices">{{price}}€</ng-option>
@@ -220,7 +203,8 @@
                     resultados</button>
             </div>
         </ng-template>
-    </div>
+    </div> -->
+    <h2 class="p-5">Mis favoritos</h2>
     <div class="row p-5">
         <div *ngFor="let clothe of clothes" class="col-lg-4 col-md-6 col-sm-12 mb-3">
             <div class="card">
