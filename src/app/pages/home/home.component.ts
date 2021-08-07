@@ -16,14 +16,14 @@ export class HomeComponent implements OnInit {
   filtersForm: FormGroup;
   modalRef: BsModalRef;
   clothes;
-  colors = ['Amarillo', 'Blanco', 'Azul', 'Negro', 'Verde'];
+  colors = ['Amarillos', 'Azules', 'Beiges', 'Blancos', 'Estampados', 'Grises', 'Marrones', 'Morados', 'Multicolores', 'Naranjas', 'Negros', 'Plateados', 'Rojos', 'Rosas', 'Turquesas', 'Verdes'];
   colorsSelected = [];
   popularitySelected = [];
   prices = ['10', '20', '30', '40', '50'];
   pricesSelected = null;
-  sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
+  sizes = ['XXS', 'XS', 'S', 'M', 'L', 'XL', 'XXL', '52', '50', '48', '46', '44', '42', '40', '38', '36', '34'];
   sizesSelected = [];
-  brands = ['Amazon', 'Kiabi', 'Shein', 'Aliexpress', 'Zalando'];
+  brands = ['Aliexpress', 'Amazon', 'Kiabi', 'Shein', 'Wish', 'Zaful', 'Zalando'];
   brandsSelected = [];
   dynamic = 0;
   animation = false;

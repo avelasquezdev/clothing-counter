@@ -20,11 +20,14 @@ img {
 
 .checkGeneral :hover {
     /* Color provisional */
-    color: rgb(0, 183, 255);
+    /* color: rgba(0, 183, 255, 0.486); */
+    color: #ca1a1abf;
 }
 
 input[type="checkbox"]:checked + #checkGeneral2 {
-    color: rgb(0, 183, 255);
+    /* color: rgba(0, 183, 255, 0.486); */
+    color: #ca1a1abf;
+
 }
 /* ------------------ */
 
@@ -32,38 +35,38 @@ input[type="checkbox"]:checked + #checkGeneral2 {
 
 #checkTendencia :hover {
     /* Color provisional */
-    color: rgb(218, 24, 24);
+    color: #bd404d85;
 }
 
 input[type="checkbox"]:checked + #checkTendencia2 {
-    color: rgb(218, 24, 24);
+    color: #bd404d85;
 }
 
 #checkModa :hover {
     /* Color provisional */
-    color: rgb(143, 145, 34);
+    color: #ffa80883;
 }
 
 input[type="checkbox"]:checked + #checkModa2 {
-    color: rgb(143, 145, 34);
+    color: #ffa80883;
 }
 
 #checkNadaMal :hover {
     /* Color provisional */
-    color: rgb(10, 110, 15);
+    color: #d8aa227c;
 }
 
 input[type="checkbox"]:checked + #checkNadaMal2 {
-    color: rgb(10, 110, 15);
+    color: #d8aa227c;
 }
 
 #checkMejorar :hover {
     /* Color provisional */
-    color: rgb(0, 85, 241);
+    color: #0e97af7a;
 }
 
 input[type="checkbox"]:checked + #checkMejorar2 {
-    color: rgb(0, 85, 241);
+    color: #0e97af7a;
 }
 
 /* ------------------ */
