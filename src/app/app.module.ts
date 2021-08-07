@@ -32,6 +32,7 @@ import { ProgressbarModule, ProgressbarConfig } from 'ngx-bootstrap/progressbar'
 import { UsersListComponent } from './back/users/users-list/users-list.component';
 import { FavoritesComponent } from './user/favorites/favorites.component';
 import { UserComponent } from './back/users/user/user.component';
+import { CollectionsComponent } from './pages/collections/collections.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { UserComponent } from './back/users/user/user.component';
     ClothesListComponent,
     UsersListComponent,
     FavoritesComponent,
-    UserComponent
+    UserComponent,
+    CollectionsComponent
   ],
   imports: [
     BrowserModule,

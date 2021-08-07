@@ -1,0 +1,66 @@
+/* Grid de tres columnas */
+
+.inlcuirGrid {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.cambiosContenido {
+    text-align: center;
+    width: 300px;
+}
+
+.fechasOrdenador {
+    display: block;
+}
+
+.fechasMovil {
+    display: none;
+}
+
+/* Css copiado de home */
+img {
+    height: 200px;
+    width: 200px;
+}
+
+.card-footer {
+    width: 100%;
+}
+
+.progress {
+    border: 2px dashed rgba(0, 0, 0, 0.125);
+}
+
+/* ------------------ */
+
+.btn-outline-dark {
+    border-color: #343a40 !important;
+}
+
+a {
+    color: black;
+}
+
+@media (max-width: 1000px) {
+    img {
+        height: 50%;
+        width: 50%;
+    }
+}
+
+@media (max-width: 500px) {
+    .col-4 {
+        width: 100% !important;
+    }
+    .inlcuirGrid {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .fechasMovil {
+        display: block;
+    }
+    .fechasOrdenador {
+        display: none;
+    }
+}

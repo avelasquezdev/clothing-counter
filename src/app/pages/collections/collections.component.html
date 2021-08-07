@@ -1,0 +1,104 @@
+<div class="bg-light">
+    <div class="inlcuirGrid mt-5">
+        <div class="">
+            <div class="fechasOrdenador">
+                <div class="border rounded border-dark align-middle m-2 cambiosContenido">
+                    <h3>Categorías:</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            A list item
+                            <span class="badge badge-primary badge-pill">14</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            A second list item
+                            <span class="badge badge-primary badge-pill">2</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            A third list item
+                            <span class="badge badge-primary badge-pill">1</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="fechasMovil">
+                <!-- Button trigger modal -->
+                <button type="button" (click)="openModal(template)" class="btn btn-outline-dark ml-3"
+                    data-toggle="modal" data-target="#dateModal">
+                    Fechas
+                </button>
+
+                <!-- Modal -->
+                <ng-template #template>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="dateModalLabel">Categorias</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                            (click)="modalRef.hide()">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="border rounded border-dark align-middle m-2 cambiosContenido">
+                            <h3>Categorías:</h3>
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    A list item
+                                    <span class="badge badge-primary badge-pill">14</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    A second list item
+                                    <span class="badge badge-primary badge-pill">2</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    A third list item
+                                    <span class="badge badge-primary badge-pill">1</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                            (click)="modalRef.hide()">Ver
+                            Resultados</button>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+
+        <div class="row p-5">
+            <div *ngFor="let clothe of clothes" class="col-lg-4 col-md-6 col-sm-12 mb-3">
+                <div class="card">
+                    <div class="text-center w-100">
+                        <div class="mb-3">
+                            <progressbar class="progress-striped active" [value]="animation ? clothe['percentage'] : 0"
+                                [type]="getType(clothe['percentage'])"></progressbar>
+                        </div>
+                        <a [href]="clothe['link']" target="_blank"
+                            (click)="addImpact(clothe['@id'].replace('/clothes/', ''))"><img
+                                [src]="'http://localhost:8000/media/'+clothe['image']['filePath']"
+                                class="card-img-top m-5" [alt]="clothe['title']"></a>
+                    </div>
+                    <div class="card-body border-top">
+                        <h5 class="card-title"> <a [href]="clothe['link']" target="_blank"
+                                (click)="addImpact(clothe['@id'].replace('/clothes/', ''))">{{clothe['title']}}</a></h5>
+                        <p class="card-text">{{clothe['description']}}</p>
+                        <h6 class="card-text">Impactos: <strong>{{clothe['impacts']}}</strong></h6>
+                        <h3 class="card-text text-right">{{clothe['price']}}€</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-8">
+                                <h6 class="text-muted">{{clothe['createdAt']}}</h6>
+                            </div>
+                            <span (click)="clickFavorite(clothe['@id'])" class="col-4 text-right">
+                                <i *ngIf="userClothes.includes(clothe['@id'])" class="fa fa-heart fa-lg"
+                                    style="color: #dc3545;"></i>
+                                <i *ngIf="!userClothes.includes(clothe['@id'])" class="fa fa-heartbeat fa-lg"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
