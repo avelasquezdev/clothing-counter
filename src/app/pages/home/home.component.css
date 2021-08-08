@@ -24,7 +24,7 @@ img {
     color: #ca1a1abf;
 }
 
-input[type="checkbox"]:checked + #checkGeneral2 {
+input[type="checkbox"]:checked + .checkGeneral2 {
     /* color: rgba(0, 183, 255, 0.486); */
     color: #ca1a1abf;
 
