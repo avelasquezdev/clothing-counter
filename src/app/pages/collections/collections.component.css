@@ -32,6 +32,9 @@ img {
     border: 2px dashed rgba(0, 0, 0, 0.125);
 }
 
+.border {
+    border: 5px solid white !important;
+}
 /* ------------------ */
 
 .btn-outline-dark {

@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.clotheService.getClothes().subscribe(clothes => {
+    this.clotheService.getClothes(this.filtersForm.value).subscribe(clothes => {
       this.clothes = clothes['hydra:member'];
       if (this.authService.getUserId()) {
         this.clotheService.getClothesByUserId(this.authService.getProfileId()).subscribe(clothes => {
@@ -77,16 +77,28 @@ export class HomeComponent implements OnInit {
       isFashion: [false],
       isGood: [false],
       isOk: [false],
-      isHats: [false],
-      isShirts: [false],
-      isHodies: [false],
-      isJackets: [false],
-      isPants: [false],
-      isShoes: [false],
+      accesorios: [false],
+      bañadores: [false],
+      bermudas: [false],
+      bolsos: [false],
+      camisas: [false],
+      camisetas: [false],
+      cazadoras: [false],
+      chaquetas: [false],
+      gorras: [false],
+      jeans: [false],
+      jerseis: [false],
+      joggers: [false],
+      pantalones: [false],
+      polos: [false],
+      sudaderas: [false],
+      zapatos: [false],
       colors: [''],
       price: [''],
       sizes: [''],
       brands: [''],
+      isAvailable: [true],
+      createdAt: ['desc']
     })
   }
 

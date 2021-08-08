@@ -30,7 +30,8 @@ const routes: Routes = [
   { path: 'edit-user/:id', component: UserComponent },
   { path: 'users-list', component: UsersListComponent },
   { path: 'favorites', component: FavoritesComponent },
-  { path: 'collections', component: CollectionsComponent}
+  { path: 'collections', component: CollectionsComponent},
+  { path: 'collections/:category', component: CollectionsComponent}
 ];
 
 @NgModule({

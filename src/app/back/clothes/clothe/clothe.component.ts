@@ -21,7 +21,7 @@ export class ClotheComponent implements OnInit {
   selectedFile: File;
   selectedFiles = [];
   uploadedFiles = [];
-  colors = ['Amarillo', 'Blanco', 'Azul', 'Negro', 'Verde'];
+  colors = ['Amarillos', 'Blancos', 'Azules', 'Negros', 'Verdes'];
   colorsSelected = [];
   sizes = ['XS', 'Small', 'M', 'L', 'XL', 'XXL'];
   sizesSelected = [];
@@ -63,6 +63,7 @@ export class ClotheComponent implements OnInit {
       description: ['', Validators.required],
       price: ['0', Validators.required],
       isRecommended: [false, Validators.required],
+      isAvailable: [true, Validators.required],
       categories: [null, Validators.required],
       colors: [null, Validators.required],
       sizes: [null, Validators.required],
@@ -80,6 +81,7 @@ export class ClotheComponent implements OnInit {
       this.clotheForm.get('description').setValue(clothe.description);
       this.clotheForm.get('price').setValue(clothe.price);
       this.clotheForm.get('isRecommended').setValue(clothe.isRecommended);
+      this.clotheForm.get('isAvailable').setValue(clothe.isAvailable);
       this.clotheForm.get('categories').setValue(clothe.categories[0]['@id']);
       this.clotheForm.get('colors').setValue(clothe.colors[0]);
       this.clotheForm.get('sizes').setValue(clothe.sizes[0]);
@@ -102,6 +104,7 @@ export class ClotheComponent implements OnInit {
       description: this.clotheForm.get('description').value,
       price: this.clotheForm.get('price').value,
       isRecommended: this.clotheForm.get('isRecommended').value,
+      isAvailable: this.clotheForm.get('isAvailable').value,
       categories: [this.clotheForm.get('categories').value],
       colors: [this.clotheForm.get('colors').value],
       sizes: [this.clotheForm.get('sizes').value],

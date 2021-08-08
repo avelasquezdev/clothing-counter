@@ -38,6 +38,23 @@
     </div>
   </div>
   <div class="form-group">
+    <label for="InputUserName">Disponible</label><!-- Radio: Si o No -->
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="isAvailable" id="radioAvailable1"
+        formControlName="isAvailable" [value]="true" checked>
+      <label class="form-check-label" for="radioAvailable1">
+        Sí Disponible
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="isAvailable" id="radioAvailable2"
+        formControlName="isAvailable" [value]="false">
+      <label class="form-check-label" for="radioAvailable2">
+        No Disponible
+      </label>
+    </div>
+  </div>
+  <div class="form-group">
     <label for="selectCategoria">Categoria</label>
     <select class="form-control" id="selectCategoria" formControlName="categories">
       <option *ngFor="let category of categories" [value]="[category['@id']]">{{category.name}}</option>

@@ -11,6 +11,7 @@ export class Clothe {
     popularity?;
     impacts?;
     isRecommended: number;
+    isAvailable: number;
     categories;
     colors;
     sizes;

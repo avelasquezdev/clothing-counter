@@ -6,6 +6,8 @@ import { timer } from 'rxjs';
 import { AuthService } from 'src/app/shared/auth/auth.service';
 import { UsersService } from 'src/app/shared/users/users.service';
 import { User } from 'src/app/shared/users/user.model';
+import { ActivatedRoute } from '@angular/router';
+import { CategoryService } from 'src/app/back/categories/category.service';
 
 @Component({
   selector: 'app-collections',
@@ -19,8 +21,10 @@ export class CollectionsComponent implements OnInit {
   colors = ['Amarillos', 'Azules', 'Beiges', 'Blancos', 'Estampados', 'Grises', 'Marrones', 'Morados', 'Multicolores', 'Naranjas', 'Negros', 'Plateados', 'Rojos', 'Rosas', 'Turquesas', 'Verdes'];
   colorsSelected = [];
   popularitySelected = [];
-  prices = ['10', '20', '30', '40', '50'];
-  pricesSelected = null;
+  orders = [{name: 'Popularidad', value: 'popularity', order: 'asc'}, {name: 'Precio ascendente', value: 'price', order: 'asc'}, {name: 'Precio descendente', value: 'price', order: 'desc'},
+  {name: 'Fecha ascendente', value: 'createdAt', order: 'asc'}, {name: 'Fecha descendente', value: 'createdAt', order: 'desc'}];
+  //'Agosto', 'Julio', 'Junio', 'Mayo', 'Abril', 'Marzo', 'Febrero', 'Enero', '2020'];
+  orderSelected = null;
   sizes = ['XXS', 'XS', 'S', 'M', 'L', 'XL', 'XXL', '52', '50', '48', '46', '44', '42', '40', '38', '36', '34'];
   sizesSelected = [];
   brands = ['Aliexpress', 'Amazon', 'Kiabi', 'Shein', 'Wish', 'Zaful', 'Zalando'];
@@ -30,18 +34,28 @@ export class CollectionsComponent implements OnInit {
   type: 'success' | 'info' | 'warning' | 'danger';
   userClothes = [];
   isAlertShown = false;
+  categories;
   constructor(
     private formBuilder: FormBuilder,
     private modalService: BsModalService,
     private clotheService: ClotheService,
     private authService: AuthService,
-    private userServices: UsersService
+    private userServices: UsersService,
+    private activatedRoute: ActivatedRoute,
+    private categoryService: CategoryService
   ) {
     this.createForm();
   }
 
   ngOnInit(): void {
-    this.clotheService.getClothes().subscribe(clothes => {
+
+    if (this.activatedRoute.snapshot.params.category) {
+      this.filtersForm.get(this.activatedRoute.snapshot.params.category).setValue(true);
+    }
+    this.categoryService.getCategories().subscribe(categories => {
+      this.categories = categories['hydra:member'];
+    })
+    this.clotheService.getClothes(this.filtersForm.value).subscribe(clothes => {
       this.clothes = clothes['hydra:member'];
       if (this.authService.getUserId()) {
         this.clotheService.getClothesByUserId(this.authService.getProfileId()).subscribe(clothes => {
@@ -73,20 +87,23 @@ export class CollectionsComponent implements OnInit {
 
   createForm() {
     this.filtersForm = this.formBuilder.group({
-      isTrending: [false],
-      isFashion: [false],
-      isGood: [false],
-      isOk: [false],
-      isHats: [false],
-      isShirts: [false],
-      isHodies: [false],
-      isJackets: [false],
-      isPants: [false],
-      isShoes: [false],
-      colors: [''],
-      price: [''],
-      sizes: [''],
-      brands: [''],
+      accesorios: [false],
+      bañadores: [false],
+      bermudas: [false],
+      bolsos: [false],
+      camisas: [false],
+      camisetas: [false],
+      cazadoras: [false],
+      chaquetas: [false],
+      gorras: [false],
+      jeans: [false],
+      jerseis: [false],
+      joggers: [false],
+      pantalones: [false],
+      polos: [false],
+      sudaderas: [false],
+      zapatos: [false],
+      order: ['']
     })
   }
 

@@ -4,30 +4,19 @@
             <div class="fechasOrdenador">
                 <div class="border rounded border-dark align-middle m-2 cambiosContenido">
                     <h3>Categorías:</h3>
-                    <form class="p-2">
+                    <form [formGroup]="filtersForm" class="p-2">
                         <div class="form-group">
-                            <select class="form-control" id="fechasSelect">
-                                <option selected>Ordenar por</option>
-                                <option>Mayo</option>
-                                <option>Junio</option>
-                                <option>Julio</option>
-                                <option>Agosto</option>
-                                <option>Septiembre</option>
-                            </select>
+                            <ng-select bindLabel="Ordenar por" (change)="filterClothes()" placeholder="Ordenar por"
+                                appendTo="body" formControlName="order" [(ngModel)]="orderSelected">
+                                <ng-option [value]="order" *ngFor="let order of orders">{{order['name']}}</ng-option>
+                            </ng-select>
                         </div>
                     </form>
                     <ul class="list-group">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            A list item
-                            <span class="badge badge-primary badge-pill">14</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            A second list item
-                            <span class="badge badge-primary badge-pill">2</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            A third list item
-                            <span class="badge badge-primary badge-pill">1</span>
+                        <li *ngFor="let category of categories"
+                            class="list-group-item d-flex justify-content-between align-items-center">
+                            <a [href]="'collections/' + category['name'].toLowerCase()">{{category['name']}}</a>
+                            <span class="badge badge-danger badge-pill">{{category['currentClothes']}}</span>
                         </li>
                     </ul>
                 </div>
@@ -36,13 +25,13 @@
                 <!-- Button trigger modal -->
                 <button type="button" (click)="openModal(template)" class="btn btn-outline-dark ml-3"
                     data-toggle="modal" data-target="#dateModal">
-                    Categorias
+                    Categorías
                 </button>
 
                 <!-- Modal -->
                 <ng-template #template>
                     <div class="modal-header">
-                        <h5 class="modal-title" id="dateModalLabel">Categorias</h5>
+                        <h5 class="modal-title" id="dateModalLabel">Categorías</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"
                             (click)="modalRef.hide()">
                             <span aria-hidden="true">&times;</span>
@@ -63,17 +52,10 @@
                                 </div>
                             </form>
                             <ul class="list-group">
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    A list item
-                                    <span class="badge badge-primary badge-pill">14</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    A second list item
-                                    <span class="badge badge-primary badge-pill">2</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    A third list item
-                                    <span class="badge badge-primary badge-pill">1</span>
+                                <li *ngFor="let category of categories"
+                                    class="list-group-item d-flex justify-content-between align-items-center">
+                                    <a [href]="'collections/' + category['name'].toLowerCase()">{{category['name']}}</a>
+                                    <span class="badge badge-primary badge-pill">{{category['currentClothes']}}</span>
                                 </li>
                             </ul>
                         </div>
@@ -89,19 +71,19 @@
 
         <div class="row p-5">
             <div *ngFor="let clothe of clothes" class="col-lg-4 col-md-6 col-sm-12 mb-3">
-                <div class="card">
+                <div class="card" [ngStyle]="{'opacity': clothe['isAvailable'] ? '1' : '0.3'}">
                     <div class="text-center w-100">
                         <div class="mb-3">
                             <progressbar class="progress-striped active" [value]="animation ? clothe['percentage'] : 0"
                                 [type]="getType(clothe['percentage'])"></progressbar>
                         </div>
-                        <a [href]="clothe['link']" target="_blank"
+                        <a [href]="clothe['link']" target="_blank" [ngStyle]="{'pointer-events': clothe['isAvailable'] ? 'cursor' : 'none'}"
                             (click)="addImpact(clothe['@id'].replace('/clothes/', ''))"><img
                                 [src]="'http://localhost:8000/media/'+clothe['image']['filePath']"
                                 class="card-img-top m-5" [alt]="clothe['title']"></a>
                     </div>
                     <div class="card-body border-top">
-                        <h5 class="card-title"> <a [href]="clothe['link']" target="_blank"
+                        <h5 class="card-title"> <a [href]="clothe['link']" target="_blank" [ngStyle]="{'pointer-events': clothe['isAvailable'] ? 'cursor' : 'none'}"
                                 (click)="addImpact(clothe['@id'].replace('/clothes/', ''))">{{clothe['title']}}</a></h5>
                         <p class="card-text">{{clothe['description']}}</p>
                         <h6 class="card-text">Impactos: <strong>{{clothe['impacts']}}</strong></h6>
