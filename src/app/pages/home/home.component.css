@@ -35,38 +35,38 @@ input[type="checkbox"]:checked + .checkGeneral2 {
 
 #checkTendencia :hover {
     /* Color provisional */
-    color: #bd404d85;
+    color: #fd190da1;
 }
 
 input[type="checkbox"]:checked + #checkTendencia2 {
-    color: #bd404d85;
+    color: #fd190da1;
 }
 
 #checkModa :hover {
     /* Color provisional */
-    color: #ffa80883;
+    color: #fd4621a1;
 }
 
 input[type="checkbox"]:checked + #checkModa2 {
-    color: #ffa80883;
+    color: #fd4621a1;
 }
 
 #checkNadaMal :hover {
     /* Color provisional */
-    color: #d8aa227c;
+    color: #fa810fa1;
 }
 
 input[type="checkbox"]:checked + #checkNadaMal2 {
-    color: #d8aa227c;
+    color: #fa810fa1;
 }
 
 #checkMejorar :hover {
     /* Color provisional */
-    color: #0e97af7a;
+    color: #fba82370;
 }
 
 input[type="checkbox"]:checked + #checkMejorar2 {
-    color: #0e97af7a;
+    color: #fba82370;
 }
 
 /* ------------------ */
@@ -92,6 +92,14 @@ a {
 .filtersmovile {
     display: none;
 }
+
+input[type="checkbox"]:hover {
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked { /* change "blue" browser chrome to yellow */
+    filter: invert(100%) hue-rotate(208deg) brightness(1.8);
+  }
 
 @media (max-width: 1000px) {
     img {

@@ -3,7 +3,7 @@
         <div class="">
             <div class="fechasOrdenador">
                 <div class="border rounded border-dark align-middle m-2 cambiosContenido">
-                    <h3>Categorías:</h3>
+                    <!-- <h6>Categorías:</h6> -->
                     <form [formGroup]="filtersForm" class="p-2">
                         <div class="form-group">
                             <ng-select bindLabel="Ordenar por" (change)="filterClothes()" placeholder="Ordenar por"
@@ -13,9 +13,9 @@
                         </div>
                     </form>
                     <ul class="list-group">
-                        <li *ngFor="let category of categories"
+                        <li *ngFor="let category of categories" [ngStyle]="{'opacity': category['currentClothes'] > 0 ? '1' : '0.3'}"
                             class="list-group-item d-flex justify-content-between align-items-center">
-                            <a [href]="'collections/' + category['name'].toLowerCase()">{{category['name']}}</a>
+                            <a [ngStyle]="{'pointer-events': category['currentClothes'] > 0 ? 'cursor' : 'none'}" [href]="'collections/' + category['name'].toLowerCase()">{{category['name']}}</a>
                             <span class="badge badge-danger badge-pill">{{category['currentClothes']}}</span>
                         </li>
                     </ul>
@@ -23,15 +23,18 @@
             </div>
             <div class="fechasMovil">
                 <!-- Button trigger modal -->
-                <button type="button" (click)="openModal(template)" class="btn btn-outline-dark ml-3"
-                    data-toggle="modal" data-target="#dateModal">
-                    Categorías
-                </button>
+                <div class="row justify-content-end mr-1">
+                    <button type="button" (click)="openModal(template)" class="btn-mobile btn btn-outline-dark ml-3"
+                        data-toggle="modal" data-target="#dateModal">
+                        <i class="fa fa-sort"></i>
+                    </button>
+                </div>
+
 
                 <!-- Modal -->
                 <ng-template #template>
                     <div class="modal-header">
-                        <h5 class="modal-title" id="dateModalLabel">Categorías</h5>
+                        <!-- <h5 class="modal-title" id="dateModalLabel">Categorías</h5> -->
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"
                             (click)="modalRef.hide()">
                             <span aria-hidden="true">&times;</span>
@@ -41,21 +44,19 @@
                         <div class="border rounded border-dark align-middle m-2 cambiosContenido">
                             <form class="p-2">
                                 <div class="form-group">
-                                    <select class="form-control" id="fechasSelect">
-                                        <option selected>Ordenar Por</option>
-                                        <option>Mayo</option>
-                                        <option>Junio</option>
-                                        <option>Julio</option>
-                                        <option>Agosto</option>
-                                        <option>Septiembre</option>
-                                    </select>
+                                    <ng-select bindLabel="Ordenar por" (change)="filterClothes()"
+                                        placeholder="Ordenar por" appendTo="body" formControlName="order"
+                                        [(ngModel)]="orderSelected">
+                                        <ng-option [value]="order" *ngFor="let order of orders">{{order['name']}}
+                                        </ng-option>
+                                    </ng-select>
                                 </div>
                             </form>
                             <ul class="list-group">
-                                <li *ngFor="let category of categories"
+                                <li *ngFor="let category of categories" [ngStyle]="{'opacity': category['currentClothes'] > 0 ? '1' : '0.3'}"
                                     class="list-group-item d-flex justify-content-between align-items-center">
-                                    <a [href]="'collections/' + category['name'].toLowerCase()">{{category['name']}}</a>
-                                    <span class="badge badge-primary badge-pill">{{category['currentClothes']}}</span>
+                                    <a [ngStyle]="{'pointer-events': category['currentClothes'] > 0 ? 'cursor' : 'none'}" [href]="'collections/' + category['name'].toLowerCase()">{{category['name']}}</a>
+                                    <span class="badge badge-danger badge-pill">{{category['currentClothes']}}</span>
                                 </li>
                             </ul>
                         </div>
@@ -77,13 +78,15 @@
                             <progressbar class="progress-striped active" [value]="animation ? clothe['percentage'] : 0"
                                 [type]="getType(clothe['percentage'])"></progressbar>
                         </div>
-                        <a [href]="clothe['link']" target="_blank" [ngStyle]="{'pointer-events': clothe['isAvailable'] ? 'cursor' : 'none'}"
+                        <a [href]="clothe['link']" target="_blank"
+                            [ngStyle]="{'pointer-events': clothe['isAvailable'] ? 'cursor' : 'none'}"
                             (click)="addImpact(clothe['@id'].replace('/clothes/', ''))"><img
                                 [src]="'http://localhost:8000/media/'+clothe['image']['filePath']"
                                 class="card-img-top m-5" [alt]="clothe['title']"></a>
                     </div>
                     <div class="card-body border-top">
-                        <h5 class="card-title"> <a [href]="clothe['link']" target="_blank" [ngStyle]="{'pointer-events': clothe['isAvailable'] ? 'cursor' : 'none'}"
+                        <h5 class="card-title"> <a [href]="clothe['link']" target="_blank"
+                                [ngStyle]="{'pointer-events': clothe['isAvailable'] ? 'cursor' : 'none'}"
                                 (click)="addImpact(clothe['@id'].replace('/clothes/', ''))">{{clothe['title']}}</a></h5>
                         <p class="card-text">{{clothe['description']}}</p>
                         <h6 class="card-text">Impactos: <strong>{{clothe['impacts']}}</strong></h6>

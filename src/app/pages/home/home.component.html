@@ -31,7 +31,7 @@
             <hr>
             <!-- Filtros tipo de ropa -->
             <div class="">
-                <h6 class="ml-5 mt-4 mb-2">Tipo De Ropa</h6>
+                <h6 class="ml-5 mt-4 mb-2">Tipo de Ropa</h6>
                 <div class="row ml-5 mt-4">
                     <div class="mr-4 form-group form-check checkGeneral">
                         <input type="checkbox" formControlName="accesorios" class="form-check-input"
@@ -156,10 +156,12 @@
 
     <div class="mt-4 ml-4 filtersmovile">
         <!-- Button trigger modal -->
-        <button type="button" (click)="openModal(template)" class="btn btn-outline-dark" data-toggle="modal"
-            data-target="#filtersModal">
-            Filtros
-        </button>
+        <div class="row justify-content-end mr-1">
+            <button type="button" (click)="openModal(template)" class="btn-mobile btn btn-outline-dark"
+                data-toggle="modal" data-target="#filtersModal">
+                <i class="fa fa-sort"></i>
+            </button>
+        </div>
 
         <!-- Modal -->
         <ng-template #template>
@@ -201,7 +203,7 @@
                     <hr>
                     <!-- Filtros tipo de ropa -->
                     <div class="">
-                        <h6 class="ml-5 mt-4 mb-2">Tipo De Ropa</h6>
+                        <h6 class="ml-5 mt-4 mb-2">Tipo de Ropa</h6>
                         <div class="row ml-5 mt-4">
                             <div class="mr-4 form-group form-check checkGeneral">
                                 <input type="checkbox" formControlName="accesorios" class="form-check-input"
@@ -324,7 +326,7 @@
                     </div>
                 </form>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer mt-5">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modalRef.hide()">Ver
                     resultados</button>
             </div>

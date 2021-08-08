@@ -6,6 +6,13 @@
 @import "~@ng-select/ng-select/themes/ant.design.theme.css";
 
 // ngx-datatable styles
+
+h1 {
+  font-family: 'emoji';
+  a {
+    color: #e4e9ed !important;
+  }
+}
 body  .ngx-datatable.bootstrap .datatable-body .datatable-body-row.datatable-row-even {
     background-color: #fff;
   }
@@ -55,25 +62,32 @@ body  .ngx-datatable.bootstrap .datatable-body .datatable-body-row.datatable-row
 }
 
 .bg-primary {
-  background-color: #0e97af7a !important;
+  background-color: #fba82385 !important;
 }
 
 .bg-info {
-  background-color: #d8aa227c !important;
+  background-color: #fa810f85 !important;
 }
 
 .bg-danger {
-  background-color: #bd404d85 !important;
+  background-color: #fd190d85 !important;
+
 }
 
 .bg-warning {
-  background-color: #ffa80883 !important;
+  background-color: #fd462185 !important;
+
 }
 
 .badge-danger {
-  background-color: #bd404d85 !important;
+  background-color: #fd190d85 !important;
 }
 
 i {
   cursor: pointer;
+}
+
+.btn-mobile {
+  position: fixed;
+  z-index: 1;
 }

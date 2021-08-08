@@ -1,17 +1,17 @@
 <div class="bg-light">
     <div class="container">
-        <div class="border border-dark rounded m-5 mobileOptions">
-            <h1 class="p-4 mobileTitle">Inicio Sesion</h1>
+        <div class="border bg-login border-dark rounded m-5 mobileOptions">
+            <h2 class="p-4 mobileTitle">Inicio Sesión</h2>
             <form [formGroup]="loginForm" class="p-4">
                 <div class="form-group">
-                    <label for="InputEmail">Correo Electronico</label>
+                    <label for="InputEmail">Email</label>
                     <input type="email" class="form-control" id="InputEmail" aria-describedby="email" formControlName="email" required>
                 </div>
                 <div class="form-group">
                     <label for="InputPassword">Contraseña</label>
                     <input type="password" class="form-control" id="InputPassword" aria-describedby="password" formControlName="password" required>
                 </div>
-                <button type="submit" class="btn  btn-outline-dark btn-lg btn-block" (click)="login()">Iniciar Sesion</button>
+                <button type="submit" class="btn  btn-outline-dark btn-lg btn-block" (click)="login()">Iniciar Sesión</button>
             </form>
             <div class="pl-4 pb-3">
                 <h5>Conexion con: <a href="#" role="button"><i class="fa fa-google border border-dark rounded-circle p-2 logoGoogle"></i></a></h5>

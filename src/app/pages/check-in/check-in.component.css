@@ -12,3 +12,7 @@
         font-size: 1.0rem !important;
     }
 }
+
+.bg-login {
+    background-color: #f2f3f3;
+}
