@@ -8,6 +8,7 @@ import { UsersService } from 'src/app/shared/users/users.service';
 import { User } from 'src/app/shared/users/user.model';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryService } from 'src/app/back/categories/category.service';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-collections',
@@ -42,13 +43,24 @@ export class CollectionsComponent implements OnInit {
     private authService: AuthService,
     private userServices: UsersService,
     private activatedRoute: ActivatedRoute,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private titleService: Title,
+    private metaService: Meta
   ) {
     this.createForm();
   }
 
   ngOnInit(): void {
-
+    this.titleService.setTitle("Top Trending Clothes - Colecciones");
+    this.metaService.addTags(
+      [
+        {property: 'og:title', content: "Top Trending Clothes - Colecciones"},
+        {name: 'robots', content: 'index, follow' },
+        {name: 'description', content: "Directorio con todas las colecciones de nuestras tiendas afiliadas"},
+        {property: 'og:description', content: "Directorio con todas las colecciones de nuestras tiendas afiliadas"},
+        {property: 'og:image', content: 'http://localhost:1337/assets/logo.png'}
+      ]
+    );
     if (this.activatedRoute.snapshot.params.category) {
       this.filtersForm.get(this.activatedRoute.snapshot.params.category).setValue(true);
     }

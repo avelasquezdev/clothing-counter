@@ -6,6 +6,7 @@ import { timer } from 'rxjs';
 import { AuthService } from 'src/app/shared/auth/auth.service';
 import { UsersService } from 'src/app/shared/users/users.service';
 import { User } from 'src/app/shared/users/user.model';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -35,12 +36,24 @@ export class HomeComponent implements OnInit {
     private modalService: BsModalService,
     private clotheService: ClotheService,
     private authService: AuthService,
-    private userServices: UsersService
+    private userServices: UsersService,
+    private titleService: Title,
+    private metaService: Meta
   ) {
     this.createForm();
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle("Top Trending Clothes");
+      this.metaService.addTags(
+        [
+          {property: 'og:title', content: "Top Trending Clothes"},
+          {name: 'robots', content: 'index, follow' },
+          {name: 'description', content: "Directorio con las tendencias actuales de las mejores tiendas de ropa, busca, filtra y elige el nuevo artículo para tu armario"},
+          {property: 'og:description', content: "Directorio con las tendencias actuales de las mejores tiendas de ropa, busca, filtra y elige el nuevo artículo para tu armario"},
+          {property: 'og:image', content: 'http://localhost:1337/assets/logo.png'}
+        ]
+      );
     this.clotheService.getClothes(this.filtersForm.value).subscribe(clothes => {
       this.clothes = clothes['hydra:member'];
       if (this.authService.getUserId()) {
